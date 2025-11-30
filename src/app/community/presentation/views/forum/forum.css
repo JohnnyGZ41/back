@@ -1,0 +1,26 @@
+.mat-spacer {
+  flex: 1 1 auto;
+}
+
+.new-discussion-button{
+  background-color: black;
+  color: #92FF71;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.toolbar{
+  border-top: 5px solid black;
+  border-bottom: 5px solid black;
+
+}
+

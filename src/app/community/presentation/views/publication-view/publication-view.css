@@ -1,0 +1,102 @@
+
+.publication-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px auto;
+  color: white;
+  height: auto;
+}
+
+.publication-card{
+  height: auto;
+  width: 700px;
+  background-color: #1A1A1A;
+  border: 3px solid #92FF71;
+}
+
+.profile-avatar {
+  background-size: cover;
+  width : 60px;
+  height : 60px;
+}
+
+.title{
+  font-size: 20px;
+}
+
+.date{
+  color: white;
+}
+
+.comment{
+  font-size: 15px;
+}
+
+.card-image{
+  margin: 50px auto 20px;
+  width:650px;
+  border-radius: 15px;
+}
+
+.comment-input-container {
+  position: relative;
+  width: 700px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-textarea {
+  width: 97%;
+  height: 30px;
+  resize: none;
+  padding: 12px;
+  background-color: #1A1A1A;
+  border: 3px solid #92FF71;
+  border-radius:  30px;
+  outline: none;
+  font-size: 16px;
+  transition: all 0.25s ease;
+  overflow: hidden;
+
+}
+
+.comment-textarea:focus {
+  height: 120px;
+  background-color: #1A1A1A;
+  border: 3px solid #92FF71;
+  border-radius: 30px;
+  color: white;
+}
+
+.comment-actions {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.comment-actions button {
+  background-color: #92FF71;
+  color: black;
+  border: none;
+  border-radius: 30px;
+  font-weight: 500;
+  padding: 6px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.comment-actions button:hover {
+  background-color: #7eed5f;
+  transform: translateY(-1px);
+}
+
+.comment-actions button:active {
+  transform: translateY(1px);
+}
+
+
+

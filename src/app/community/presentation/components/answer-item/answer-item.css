@@ -1,0 +1,26 @@
+
+.answer-container {
+  width: auto;
+  height: auto;
+  margin-top: 50px;
+  color: white;
+}
+
+.date{
+  color: white;
+}
+
+.answer-card{
+  background-color: #1A1A1A;
+  border: 3px solid #92FF71;
+
+  width: 700px;
+  height: auto;
+}
+
+.profile-avatar {
+  background-size: cover;
+  width : 60px;
+  height : 60px;
+}
+

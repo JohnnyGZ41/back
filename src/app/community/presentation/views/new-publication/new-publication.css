@@ -1,0 +1,117 @@
+.form-container {
+  border-radius: 20px;
+  padding: 24px;
+  width: 500px;
+  margin: 40px auto 0;
+  background-color: #1A1A1A;
+  border: 3px solid #92FF71;
+  height: auto;
+
+}
+
+.title {
+  margin-top: 16px;
+  margin-bottom: 40px;
+  text-align: center;
+  color: white;
+  font-weight: 550;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+}
+
+.field-label{
+  max-width: 420px;
+  margin-top: -10px;
+  margin-bottom: -20px;
+  font-weight: normal;
+  font-size: 15px;
+  text-align: left;
+  color:white;
+}
+
+mat-form-field{
+  max-width: 420px;
+  display: block;
+  width: 100%;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.image-input{
+  max-width: 420px;
+  display: block;
+  margin: 30px auto;
+}
+
+.title-input{
+  display: block;
+
+  margin: 30px auto;
+  border-radius: 10px;
+  height: 50px;
+  width: 400px;
+  background-color: #4A4A4A;
+}
+
+.comment-input{
+
+  display: block;
+  width: 100%;
+  margin: 30px auto;
+  border-radius: 10px;
+  max-height: 170px;
+  min-height: 170px;
+
+  max-width: 400px;
+  min-width: 400px;
+  background-color: #4A4A4A;
+  color: white;
+}
+
+input{
+  margin-top: -12px;
+  margin-bottom: -20px;
+  width: 100%;
+  padding: 5px;
+  border-radius: 20px;
+  border: 2px solid #666;
+  background-color: #4A4A4A;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+}
+
+.actions{
+  display: flex;
+  flex-direction: row;
+  align-items: normal;
+  margin-top: 10px;
+  gap: 50px;
+}
+
+.submit-button{
+  width: 200px;
+  background-color: #92FF71;
+  border: 2px solid black;
+  color: black;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.cancel-button{
+  width: 200px;
+  background-color: #92FF71;
+  border: 2px solid black;
+  color: black;
+  cursor: pointer;
+  font-size: 20px;
+
+}
+
+
+

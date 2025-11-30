@@ -1,0 +1,26 @@
+<div class="publication-container">
+  <mat-card class="publication-card" appearance="outlined">
+    <mat-card-header>
+      <img mat-card-avatar class="profile-avatar"
+           [alt]="publicationProfile()?.id"
+           [src]="publicationProfile()?.image"/>
+      <mat-card-title>{{publicationUser()?.name}}</mat-card-title>
+      <mat-card-subtitle class="date"> {{"publication.created" | translate}} {{publication().creationDate | date:'yyyy-MM-dd'}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p class="title">{{publication().title}}</p>
+
+      @if (publication().comment){
+        <p class="comment">{{publication().comment}}</p>
+      }
+    </mat-card-content>
+
+    @if (publication().image) {
+      <img mat-card-image [src]="publication().image" [alt]="publication().id" class="card-image">
+    }
+    <mat-card-actions class="actions">
+      <button matButton class="view-comment-button" (click)="selectPublication(publication().id)">{{"publication.comments" | translate}}</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

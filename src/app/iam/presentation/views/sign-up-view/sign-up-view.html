@@ -1,0 +1,68 @@
+<div class="form-container">
+
+  <h1 class="title">IndieNest</h1>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <p class="field-label">{{"iam.user" | translate}}</p>
+    <mat-form-field>
+      <mat-label>{{"iam.user" | translate}}</mat-label>
+      <input formControlName="name" required>
+      @if(form.get('name')!.touched && form.get('name')!.hasError('required')){
+        <mat-error>{{"iam.errors.required" | translate}}</mat-error>
+      }
+    </mat-form-field>
+
+    <p class="field-label">{{"iam.email" | translate}}</p>
+    <mat-form-field>
+      <mat-label>{{"iam.email" | translate}}</mat-label>
+      <input formControlName="email" required>
+      @if(form.get('email')!.touched && form.get('email')!.hasError('required')){
+        <mat-error>{{"iam.errors.required" | translate}}</mat-error>
+      }
+      @if(form.get('email')!.hasError('email')){
+        <mat-error>{{"iam.errors.invalid" | translate}}</mat-error>
+      }
+    </mat-form-field>
+
+    <p class="field-label">{{"iam.password" | translate}}</p>
+    <mat-form-field>
+      <mat-label>{{"iam.password" | translate}}</mat-label>
+      <input type="password" formControlName="password" required>
+      @if(form.get('password')!.touched && form.get('password')!.hasError('required')){
+        <mat-error>{{"iam.errors.required" | translate}}</mat-error>
+      }
+    </mat-form-field>
+
+    <p class="field-label">{{"iam.confirm_password" | translate}}</p>
+    <mat-form-field>
+      <mat-label>{{"iam.confirm_password" | translate}}</mat-label>
+      <input type="password" formControlName="passwordConfirmation" required>
+      @if(form.get('passwordConfirmation')!.touched && form.get('passwordConfirmation')!.hasError('required')){
+        <mat-error>{{"iam.errors.required" | translate}}</mat-error>
+      }
+      @if (form.errors?.['passwordsMismatch'] && form.get('passwordConfirmation')?.touched) {
+        <mat-error>{{"iam.errors.mismatch" | translate}}</mat-error>
+      }
+    </mat-form-field>
+
+    <p class="field-label">{{"iam.phone" | translate}}</p>
+    <mat-form-field>
+      <mat-label>{{"iam.phone" | translate}}</mat-label>
+      <input formControlName="phoneNumber" required>
+      @if(form.get('phoneNumber')!.touched && form.get('phoneNumber')!.hasError('phoneNumber')){
+        <mat-error>{{"iam.errors.required" | translate}}</mat-error>
+      }
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" class="submit-button" [disabled]="form.invalid">
+      {{"iam.sign-up" | translate}}
+    </button>
+  </form>
+
+</div>
+
+
+
+
+

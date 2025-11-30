@@ -1,0 +1,16 @@
+<div class="answer-container">
+  <mat-card class="answer-card" appearance="outlined">
+    <mat-card-header>
+      <img mat-card-avatar class="profile-avatar"
+           [alt]="answerProfile()?.id"
+           [src]="answerProfile()?.image"/>
+      <mat-card-title>{{answerUser()?.name}}</mat-card-title>
+      <mat-card-subtitle class="date"> {{"publication.created" | translate}} {{answer().creationDate | date:'yyyy-MM-dd'}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p class="comment">{{answer().comment}}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+

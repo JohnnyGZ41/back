@@ -1,0 +1,24 @@
+<div class="forum-container">
+  <div class="header">
+    <img class="banner" alt="IndieNest Banner"
+         src="https://t4.ftcdn.net/jpg/03/98/52/99/360_F_398529942_M6zuQakwPDEQDyD0pFQj5uY4EDP0VqMh.jpg"
+         height="150px" width="1500x"/>
+
+    <mat-toolbar>
+      <mat-toolbar-row class="toolbar">
+        <h1 class="title">{{"forum.title" | translate}}</h1>
+        <div class="mat-spacer"></div>
+        <button mat-button class="new-discussion-button" (click)="newPublication()">{{"publication.new" | translate}}</button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+
+  </div>
+
+  <div class="content">
+    @for (publication of publications(); track publication.id) {
+      <app-publication-item [publication]="publication"/>
+    }
+  </div>
+
+</div>

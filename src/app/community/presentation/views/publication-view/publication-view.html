@@ -1,0 +1,53 @@
+<div class="publication-container">
+  <mat-card class="publication-card" appearance="outlined">
+    <mat-card-header>
+      <img mat-card-avatar class="profile-avatar"
+           [alt]="publicationProfile?.id"
+           [src]="publicationProfile?.image"/>
+      <mat-card-title>{{publicationUser?.name}}</mat-card-title>
+      <mat-card-subtitle class="date"> {{"publication.created" | translate}} {{currentPublication!.creationDate | date:'yyyy-MM-dd'}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <p class="title">{{currentPublication!.title}}</p>
+
+      @if (currentPublication!.comment){
+        <p class="comment">{{currentPublication!.comment}}</p>
+      }
+    </mat-card-content>
+
+    @if (currentPublication!.image) {
+      <img mat-card-image [src]="currentPublication!.image" [alt]="currentPublication!.id" class="card-image">
+    }
+  </mat-card>
+
+  <div class="comment-input-container">
+  <textarea
+    placeholder="{{'answer.write' | translate}}"
+    [(ngModel)]="newComment"
+    (focus)="showButtons = true"
+    (blur)="onBlur($event)"
+    rows="3"
+    class="comment-textarea">
+  </textarea>
+
+    <div class="comment-actions">
+      @if (showButtons) {
+        <button mat-stroked-button color="warn" (mousedown)="cancelComment()">{{'answer.cancel' | translate}}</button>
+        <button mat-flat-button color="primary" (mousedown)="submitComment()">{{'answer.comment' | translate}}</button>
+      }
+    </div>
+  </div>
+
+
+  <div class="comments-container">
+    @for (answer of answers; track answer.id) {
+      <app-answer-item [answer]="answer"/>
+    }
+  </div>
+
+</div>
+
+
+

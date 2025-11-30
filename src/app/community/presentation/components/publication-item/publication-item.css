@@ -1,0 +1,54 @@
+
+.publication-container {
+  max-width: 1000px;
+  margin-top: 50px;
+  color: white;
+  height: auto;
+}
+
+.publication-card{
+  background-color: #1A1A1A;
+  border: 3px solid #92FF71;
+  height: auto;
+  width: 700px;
+}
+
+.profile-avatar {
+  background-size: cover;
+  width : 60px;
+  height : 60px;
+}
+
+.title{
+  font-size: 20px;
+}
+
+.date{
+  color: white;
+}
+
+.comment{
+  font-size: 15px;
+}
+
+.card-image{
+  margin: 50px auto 10px;
+  width:650px;
+  border-radius: 15px;
+}
+
+.actions{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.view-comment-button{
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #92FF71;
+  width: 30%;
+}
