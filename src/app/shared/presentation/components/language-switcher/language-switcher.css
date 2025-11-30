@@ -1,0 +1,27 @@
+
+mat-button-toggle-group {
+  border: none;
+  margin-right: 10px;
+  overflow: visible !important;
+}
+
+/* Toggle unselected */
+mat-button-toggle {
+  background-color: black !important;
+  color: #92FF71 !important;
+  border-radius: 8px;
+  margin: 0 4px;
+}
+
+/* Toggle selected */
+mat-button-toggle.mat-button-toggle-checked {
+  background-color: white !important;
+  color: black !important;
+}
+
+/*icon*/
+::ng-deep .mat-pseudo-checkbox {
+  color: #92FF71 !important;
+}
+
+

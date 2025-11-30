@@ -1,0 +1,77 @@
+<div class="view-wrapper">
+
+  <aside class="sidebar-container">
+    <div class="search-box">
+      <input
+        type="text"
+        class="search-input"
+        [placeholder]="'placeholder.search' | translate"
+        [value]="searchTerm()"
+        (input)="searchTerm.set($any($event.target).value)"
+        (keyup.enter)="onSearch()"
+      />
+    </div>
+    <nav class="nav-menu">
+      @for (option of marketplaceOptions; track option.label) {
+        <a routerLink="{{option.link}}" routerLinkActive="active" class="menu-button">{{option.label | translate}}</a>
+      }
+    </nav>
+  </aside>
+
+  <main class="content-area">
+
+    <section class="carousel-row">
+      <div class="carousel-header">
+        <h2>{{"project-view.results" | translate}}</h2>
+      </div>
+
+      <div class="carousel-content">
+        @if (filteredArts().length > 0) {
+          @for (art of filteredArts(); track art.id) {
+            <div class="project-container" [routerLink]="['/project/view', 'art', art.id]">
+              <img class="project-image" alt="{{art.name}}" src="{{art.image}}">
+              <p class="project-name">{{art.name}}</p>
+            </div>
+          }
+        } @else {
+          <div class="no-results">
+            <img src="https://thumbs.dreamstime.com/b/no-photo-thumbnail-graphic-element-no-found-available-image-gallery-album-flat-picture-placeholder-symbol-vector-no-317104886.jpg" alt="No results" class="no-results-image">
+            <p>{{"project-view.not-found.art" | translate}}</p>
+            <small>{{"project-view.not-found.try" | translate}}</small>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="carousel-row">
+      <div class="carousel-header">
+        <h2>{{"project-view.best-rated" | translate}}</h2>
+      </div>
+      <div class="carousel-content">
+
+        @for (art of bestRatedArts(); track art.id) {
+          <div class="project-container" [routerLink]="['/project/view', 'art', art.id]">
+            <img class="project-image" alt="{{art.name}}" src="{{art.image}}">
+            <p class="project-name">{{art.name}} - {{art.rating}} stars</p>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="carousel-row">
+      <div class="carousel-header">
+        <h2>{{"project-view.new" | translate}}</h2>
+      </div>
+      <div class="carousel-content">
+
+        @for (art of newArts(); track art.id) {
+          <div class="project-container" [routerLink]="['/project/view', 'art', art.id]">
+            <img class="project-image" alt="{{art.name}}" src="{{art.image}}">
+            <p class="project-name">{{art.name}} - {{art.creationDate | date: "mediumDate"}}</p>
+          </div>
+        }
+      </div>
+    </section>
+
+  </main>
+</div>

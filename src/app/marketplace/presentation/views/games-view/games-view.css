@@ -1,0 +1,167 @@
+:host {
+  display: block;
+  background-color: #444;
+  color: white;
+  height: calc(100vh - 70px);
+}
+
+.view-wrapper {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  height: 100%;
+}
+
+
+.sidebar-container {
+  background-color: #333;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-right: 2px solid #000;
+  box-sizing: border-box;
+}
+
+.search-box { margin-bottom: 20px; }
+.search-input {
+  width: 100%; padding: 10px; background-color: #555;
+  border: 1px solid #777; border-radius: 8px; /* Más redondo */
+  color: white;
+  text-align: center;
+  font-weight: 500;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+.search-input:focus {
+  border-color: #92FF71;
+  outline: none;
+}
+
+.nav-menu { display: flex; flex-direction: column; gap: 10px; }
+.menu-button {
+  background-color: #4CAF50;
+  color: #111;
+  text-decoration: none;
+  padding: 12px;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.menu-button:hover, .menu-button.active {
+  background-color: #92FF71;
+  color: #000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(146, 255, 113, 0.2);
+}
+
+
+/* --- ÁREA DE CONTENIDO (Main Content) --- */
+.content-area {
+  padding: 25px;
+  overflow-y: auto;
+}
+
+.carousel-row {
+  /* Fondo y borde del contenedor principal del carrusel */
+  background-color: #1a1a1a;
+  border: 3px solid #92FF71;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 15px rgba(146, 255, 113, 0.25);
+}
+
+.carousel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #333; /* Separador bajo el título */
+  padding-bottom: 10px;
+}
+.carousel-header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+}
+.carousel-header a {
+  color: #92FF71;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.carousel-header a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.carousel-content {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 15px;
+  padding-top: 5px; /* Para acomodar el hover */
+}
+
+/* Scrollbar personalizado para carruseles */
+.carousel-content::-webkit-scrollbar { height: 8px; }
+.carousel-content::-webkit-scrollbar-thumb { background: #92FF71; border-radius: 4px; }
+.carousel-content::-webkit-scrollbar-track { background: #333; }
+
+/* --- CONTENEDOR DE PROYECTO INDIVIDUAL --- */
+.project-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #2b2b2b; /* Fondo sutil para la tarjeta */
+  border-radius: 10px;
+  padding: 10px;
+  flex-shrink: 0;
+  min-width: 200px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.project-container:hover {
+  transform: scale(1.03); /* Zoom sutil al pasar el mouse */
+  box-shadow: 0 6px 12px rgba(146, 255, 113, 0.4);
+}
+
+.project-image{
+  width: 200px;
+  height: 130px;
+  border: 2px solid #92FF71;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 5px;
+}
+.project-name{
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ccc;
+  text-align: center;
+  margin-top: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* --- SIN RESULTADOS --- */
+.no-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-size: 1.1rem;
+  height: 150px;
+  width: 100%;
+}
+
+.no-results-image {
+  width: 70px;
+  height: auto;
+  opacity: 0.5;
+  margin-bottom: 10px;
+}

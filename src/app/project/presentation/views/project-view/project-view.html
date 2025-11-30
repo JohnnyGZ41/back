@@ -1,0 +1,80 @@
+<div class="project-view-container">
+
+  @if (project(); as proj) {
+    <div class="main-content">
+
+      <div class="info-area">
+
+        <div class="image-wrapper">
+          <img class="project-image" [src]="proj.image" [alt]="proj.name">
+        </div>
+
+        <div class="project-details-card">
+          <h1 class="project-title">{{ proj.name }}</h1>
+
+          <div class="description-box">
+            <p class="description-text">{{ proj.description }}</p>
+          </div>
+
+          <div class="meta-data">
+
+            <div class="rating-reviews">
+              <p class="review-count">
+                {{ reviews().length }} {{"project-view.reviews" | translate}}
+              </p>
+              <div class="star-rating big">
+                @for (star of [1, 2, 3, 4, 5]; track star) {
+                  <span [class.filled]="averageRating() >= star">★</span>
+                }
+              </div>
+            </div>
+
+            @if (projectAuthor(); as author) {
+              <p class="made-by">Made by: <span class="author-name">{{ author.name }}</span></p>
+            }
+          </div>
+
+          @if ('price' in proj) {
+            <div class="purchase-area-small">
+              <p class="project-price">{{ $any(proj).price | currency:'USD':'symbol':'1.2-2' }}</p>
+
+              <button mat-flat-button
+                      class="buy-button"
+                      (click)="addToCart()">
+                {{ "game.add-to-cart" | translate }}
+              </button>
+            </div>
+          } @else if ('audioUrl' in proj) {
+            <div class="purchase-area-small">
+              <p class="project-price">Tipo: {{ $any(proj).category }}</p>
+              <a [href]="$any(proj).audioUrl" target="_blank" mat-flat-button class="buy-button listen-button">Escuchar Audio</a>
+            </div>
+          } @else if ('category' in proj) {
+            <div class="purchase-area-small">
+              <p class="project-price">Categoría: {{ $any(proj).category }}</p>
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="reviews-section">
+        <h2 class="reviews-title">Reviews</h2>
+
+        @if (reviews().length > 0) {
+          <div class="reviews-list">
+            @for (review of reviews(); track review.id) {
+              <app-review-item [review]="review" />
+            }
+          </div>
+        } @else {
+          <p class="no-reviews">No hay reseñas todavía.</p>
+        }
+      </div>
+    </div>
+  } @else {
+    <div class="loading-state">
+      <p>Cargando detalles del proyecto o proyecto no encontrado...</p>
+    </div>
+  }
+
+</div>

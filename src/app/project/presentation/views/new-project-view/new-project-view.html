@@ -1,0 +1,100 @@
+<div class="new-project-container">
+
+  <h2 class="form-title">{{"new-project.title" | translate}}</h2>
+  <hr class="title-divider" />
+
+  <div class="form-content">
+
+    <div class="left-section">
+
+      <form [formGroup]="generalForm" class="general-form">
+        <div class="form-group">
+          <label>{{"new-project.name" | translate}}</label>
+          <input formControlName="name" type="text" />
+        </div>
+
+        <div class="form-group">
+          <label>{{"new-project.description" | translate}}</label>
+          <textarea formControlName="description" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>{{"new-project.type" | translate}}</label>
+          <select formControlName="projectType">
+            <option value="game">{{"game.name" | translate}}</option>
+            <option value="audio">{{"audio.name" | translate}}</option>
+            <option value="art">{{"art.name" | translate}}</option>
+          </select>
+        </div>
+      </form>
+
+      <div class="specific-form">
+        @if (generalForm.value.projectType === 'game') {
+          <form [formGroup]="gameForm" class="inner-form">
+            <label>{{"game.price" | translate}}</label>
+            <input formControlName="price" type="number"/>
+
+            <label>{{"new-project.category" | translate}}</label>
+            <select formControlName="gameCategory">
+              @for (category of gameCategories; track category) {
+                <option value="{{category}}">{{category}}</option>
+              }
+            </select>
+          </form>
+        }
+
+        @if (generalForm.value.projectType === 'audio') {
+          <form [formGroup]="audioForm" class="inner-form">
+            <label>{{"audio.url" | translate}}</label>
+            <input formControlName="audioUrl" type="text" />
+
+            <label>{{"audio.format" | translate}}</label>
+            <input formControlName="format" type="text" placeholder="e.g., mp3, wav" />
+
+            <label>{{"new-project.category" | translate}}</label>
+            <select formControlName="audioCategory">
+              @for (category of audioCategories; track category) {
+                <option value="{{category}}">{{category}}</option>
+              }
+            </select>
+          </form>
+        }
+
+        @if (generalForm.value.projectType === 'art') {
+          <form [formGroup]="artForm" class="inner-form">
+            <label>{{"new-project.category" | translate}}</label>
+            <select formControlName="artCategory">
+              @for (category of artCategories; track category){
+                <option value="{{category}}">{{category}}</option>
+              }
+            </select>
+          </form>
+        }
+      </div>
+    </div>
+
+    <div class="right-section">
+      <label>{{"new-project.image" | translate}}</label>
+
+      <div class="image-preview">
+        @if (preview) {
+          <img [src]="preview" alt="Preview" />
+        } @else {
+          <div class="placeholder">
+            <img src="https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Begrippenlijst.svg" alt="PLaceholder image">
+          </div>
+        }
+      </div>
+
+      <input type="file" accept="image/*" (change)="onFileSelected($event)" class="file-input" />
+
+      <div class="button-group">
+        <button class="create-button" (click)="submit()">{{"new-project.create" | translate}}</button>
+        <button class="cancel-button" (click)="cancel()">{{"new-project.cancel" | translate}}</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="page-end-space"></div>

@@ -1,0 +1,81 @@
+<div class="view-wrapper">
+
+
+  <aside class="sidebar-container">
+    <div class="search-box">
+      <input
+        type="text"
+        class="search-input"
+        [placeholder]="'placeholder.search' | translate"
+      />
+    </div>
+    <nav class="nav-menu">
+      @for (option of marketplaceOptions; track option.label) {
+        <a routerLink="{{option.link}}" routerLinkActive="active" class="menu-button">{{option.label | translate}}</a>
+      }
+    </nav>
+  </aside>
+
+  <main class="content-area">
+
+    <section class="carousel-row">
+      <div class="carousel-header">
+        <h2>{{"marketplace.featured-games" | translate}}</h2>
+        <a routerLink="/marketplace/games" routerLinkActive="active">{{"marketplace.view-all" | translate}}</a>
+      </div>
+      <div class="carousel-content">
+        @for (game of games(); track game.id) {
+          <div class="project-container" [routerLink]="['/project/view', 'game', game.id]">
+            <img class="project-image" alt="{{game.name}}" src="{{game.image}}">
+            <p class="project-name">{{game.name}}</p>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="carousel-row">
+      <div class="carousel-header">
+        <h2>{{"marketplace.featured-audios" | translate}}</h2>
+        <a routerLink="/marketplace/audios" routerLinkActive="active">{{"marketplace.view-all" | translate}}</a>
+      </div>
+      <div class="carousel-content">
+        @for (audio of audios(); track audio.id) {
+          <div class="project-container" [routerLink]="['/project/view', 'audio', audio.id]">
+            <img class="project-image" alt="{{audio.name}}" src="{{audio.image}}">
+            <p class="project-name">{{audio.name}}</p>
+          </div>
+        }
+      </div>
+
+    </section>
+
+    <section class="carousel-row">
+      <div class="carousel-header">
+        <h2>{{"marketplace.featured-arts" | translate}}</h2>
+        <a routerLink="/marketplace/arts" routerLinkActive="active">{{"marketplace.view-all" | translate}}</a>
+      </div>
+      <div class="carousel-content">
+        @for (art of arts(); track art.id) {
+          <div class="project-container" [routerLink]="['/project/view', 'art', art.id]">
+            <img class="project-image" alt="{{art.name}}" src="{{art.image}}">
+            <p class="project-name">{{art.name}}</p>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="carousel-row">
+      <div class="carousel-header">
+        <h2>{{"marketplace.profiles" | translate}}</h2>
+      </div>
+      <div class="carousel-content">
+        @for (profile of profiles(); track profile.id) {
+          <div class="profile-container" [routerLink]="['/profile', profile.id]">
+            <img class="profile-image" alt="{{profile.id}}" src="{{profile.image}}">
+            <p class="profile-name">{{getDeveloperUser(profile)()?.name}}</p>
+          </div>
+        }
+      </div>
+    </section>
+  </main>
+</div>

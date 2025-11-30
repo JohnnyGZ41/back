@@ -1,0 +1,112 @@
+<div class="profile-container">
+
+  <div class="information-container">
+    <img class="profile-image" src="{{currentProfile()?.image}}" alt="{{currentProfile()?.id}}">
+
+    @if(!isEditing){
+
+      <p class="name">{{profileUser()?.name}}</p>
+      <p class="phone">{{profileUser()?.phoneNumber}}</p>
+      <p class="description">{{currentProfile()?.description}}</p>
+
+      @if(profileAccount()?.id === iamStore.currentAccount?.id){
+        <button mat-raised-button class="edit-button" (click)="enableEdit()">{{"profile.edit" | translate}}</button>
+      }
+    }
+    @else{
+      <form [formGroup]="form" (ngSubmit)="submit()" class="profile-form">
+
+        <p class="field-label">{{"profile.name" | translate}}</p>
+        <input matInput formControlName="name" required class="normal-input">
+
+        <p class="field-label">{{"profile.phone" | translate}}</p>
+        <input matInput formControlName="phone" required class="normal-input">
+
+        <p class="field-label">{{"profile.description" | translate}}</p>
+        <textarea matInput formControlName="description"
+                  rows="4"
+                  class="textarea-input"
+        ></textarea>
+
+        <div class="actions">
+
+          <button mat-raised-button color="primary" class="cancel-button" (click)="cancel()">
+            {{ "profile.cancel" | translate}}
+          </button>
+
+          <button mat-raised-button color="primary" type="submit" class="submit-button" [disabled]="form.invalid">
+            {{ "profile.update" | translate}}
+          </button>
+        </div>
+      </form>
+
+    }
+
+  </div>
+
+  <div class="portfolio-folder">
+
+    @if(profileAccount()?.id === iamStore.currentAccount?.id){
+      <button mat-raised-button class="add-button-floating" (click)="addProject()">{{"portfolio.new" | translate}}</button>
+    }
+
+    <div class="folder-header">
+      <div class="folder-tab title-tab">{{"portfolio.name" | translate}}</div>
+
+      <div class="folder-tabs">
+        <div
+          class="folder-tab"
+          [class.active]="selectedTab === 'games'"
+          (click)="selectTab('games')">
+          {{"portfolio.games" | translate}}
+        </div>
+
+        <div
+          class="folder-tab"
+          [class.active]="selectedTab === 'audios'"
+          (click)="selectTab('audios')">
+          {{"portfolio.audios" | translate}}
+        </div>
+
+        <div
+          class="folder-tab"
+          [class.active]="selectedTab === 'arts'"
+          (click)="selectTab('arts')">
+          {{"portfolio.arts" | translate}}
+        </div>
+      </div>
+    </div>
+
+    <div class="folder-body">
+      <div class="portfolio-content">
+        @if(selectedTab === 'games') {
+          @for (game of portfolioGames(); track game.id) {
+            <div class="project-card">
+              <img class="project-image" [src]="game.image" [alt]="game.name">
+              <p>{{game.name}}</p>
+            </div>
+          }
+        }
+
+        @if(selectedTab === 'audios') {
+          @for (audio of portfolioAudios(); track audio.id) {
+            <div class="project-card">
+              <img class="project-image" [src]="audio.image" [alt]="audio.name">
+              <p>{{audio.name}}</p>
+            </div>
+          }
+        }
+
+        @if(selectedTab === 'arts') {
+          @for (art of portfolioArts(); track art.id) {
+            <div class="project-card">
+              <img class="project-image" [src]="art.image" [alt]="art.name">
+              <p>{{art.name}}</p>
+            </div>
+          }
+        }
+      </div>
+    </div>
+  </div>
+</div>
+

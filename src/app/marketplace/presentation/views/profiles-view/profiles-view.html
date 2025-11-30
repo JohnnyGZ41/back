@@ -1,0 +1,109 @@
+<div class="view-wrapper">
+
+  <aside class="sidebar-container">
+    <div class="search-box">
+      <input
+        type="text"
+        class="search-input"
+        [placeholder]="'placeholder.search' | translate"
+        [value]="searchTerm()"
+        (input)="searchTerm.set($any($event.target).value)"
+        (keyup.enter)="onSearch()"
+      />
+    </div>
+    <nav class="nav-menu">
+      @for (option of marketplaceOptions; track option.label) {
+        <a routerLink="{{option.link}}" routerLinkActive="active" class="menu-button">{{option.label | translate}}</a>
+      }
+    </nav>
+  </aside>
+
+  <main class="content-area">
+
+    <section class="carousel-row">
+      <div class="carousel-header">
+        <h2>{{"profile-view.results" | translate}}</h2>
+      </div>
+
+      <div class="carousel-content">
+        @if (filteredProfiles().length > 0) {
+          @for (profile of filteredProfiles(); track profile.id) {
+            <div class="profile-container" [routerLink]="['/profile', profile.id]">
+              <img class="profile-image" alt="{{getProfileUser(profile).name}}" src="{{profile.image}}">
+              <p class="profile-name">{{getProfileUser(profile).name}}</p>
+            </div>
+          }
+        } @else {
+          <div class="no-results">
+            <img src="https://thumbs.dreamstime.com/b/no-photo-thumbnail-graphic-element-no-found-available-image-gallery-album-flat-picture-placeholder-symbol-vector-no-317104886.jpg" alt="No results" class="no-results-image">
+            <p>{{"profile-view.not-found.profile" | translate}}</p>
+            <small>{{"profile-view.not-found.try" | translate}}</small>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="carousel-row">
+      <div class="carousel-header">
+        <h2>{{"profile-view.standard" | translate}}</h2>
+      </div>
+      <div class="carousel-content">
+
+        @for (standard of standards(); track standard.id) {
+          <div class="profile-container" [routerLink]="['/profile', standard.id]">
+            <img class="profile-image" alt="{{getProfileUser(standard).name}}" src="{{standard.image}}">
+            <p class="profile-name">{{getProfileUser(standard).name}}</p>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="carousel-row">
+      <div class="carousel-header">
+        <h2>{{"profile-view.developer" | translate}}</h2>
+      </div>
+      <div class="carousel-content">
+
+        @for (developer of developers(); track developer.id) {
+          <div class="profile-container" [routerLink]="['/profile', developer.id]">
+            <img class="profile-image" alt="{{getProfileUser(developer).name}}" src="{{developer.image}}">
+            <p class="profile-name">{{getProfileUser(developer).name}}</p>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="carousel-row">
+      <div class="carousel-header">
+        <h2>{{"profile-view.artist" | translate}}</h2>
+      </div>
+      <div class="carousel-content">
+
+        @for (artist of artists(); track artist.id) {
+          <div class="profile-container" [routerLink]="['/profile', artist.id]">
+            <img class="profile-image" alt="{{getProfileUser(artist).name}}" src="{{artist.image}}">
+            <p class="profile-name">{{getProfileUser(artist).name}}</p>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="carousel-row">
+      <div class="carousel-header">
+        <h2>{{"profile-view.composer" | translate}}</h2>
+      </div>
+      <div class="carousel-content">
+
+        @for (composer of composers(); track composer.id) {
+          <div class="profile-container" [routerLink]="['/profile', composer.id]">
+            <img class="profile-image" alt="{{getProfileUser(composer).name}}" src="{{composer.image}}">
+            <p class="profile-name">{{getProfileUser(composer).name}}</p>
+          </div>
+        }
+      </div>
+    </section>
+
+
+
+  </main>
+</div>

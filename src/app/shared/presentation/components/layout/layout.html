@@ -1,0 +1,40 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    @if (iamStore.currentAccountIdSignal()) {
+
+      <button class="profile-avatar" routerLinkActive="active" (click)="selectProfile()">
+        <img [src]="currentProfile()?.image" alt="profile-image">
+      </button>
+
+      <p class="profile-name">{{ currentUser()?.name }}</p>
+
+      <button mat-button class="cart-button" (click)="goToCart()">
+        <mat-icon
+          [matBadge]="cartItemCount()"
+          matBadgeColor="accent"
+          [matBadgeHidden]="cartItemCount() === 0">
+          shopping_cart
+        </mat-icon>
+      </button>
+
+      <button mat-button (click)="iamStore.signOut(router)">Sign Out</button>
+
+    }
+
+    <h1 class="title">IndieNest</h1>
+    <div class="mat-spacer"></div>
+
+    <div class="options">
+      @if (!iamStore.currentAccountIdSignal()) {
+        @for (option of optional; track option.label) {
+          <a mat-button class="custom-button" [routerLink]="option.link" routerLinkActive="active">{{ option.label | translate }}</a>
+        }
+      }
+      @for (option of options; track option.label) {
+        <a mat-button class="custom-button" [routerLink]="option.link" routerLinkActive="active">{{ option.label | translate }}</a>
+      }
+    </div>
+    <app-language-switcher/>
+  </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet/>

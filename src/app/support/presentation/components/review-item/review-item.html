@@ -1,0 +1,19 @@
+@if (reviewUser(); as user) {
+  <mat-card class="review-card" appearance="outlined">
+    <mat-card-header>
+      <img mat-card-avatar class="review-avatar"
+           [src]="(reviewUserProfile()?.image) ?? 'https://img.freepik.com/vector-gratis/circulo-azul-usuario-blanco_78370-4707.jpg?semt=ais_hybrid&w=740&q=80'"
+           [alt]="user.name"/>
+      <mat-card-title>{{ user.name }}</mat-card-title>
+      <mat-card-subtitle class="rating-stars">
+        @for (star of [1, 2, 3, 4, 5]; track star) {
+          <span [class.filled]="review().rating >= star">★</span>
+        }
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="review-comment">{{ review().comment }}</p>
+      <small class="review-date">({{"publication.created" | translate}} {{ review().creationDate | date:'mediumDate' }})</small>
+    </mat-card-content>
+  </mat-card>
+}
