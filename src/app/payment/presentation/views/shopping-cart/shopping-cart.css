@@ -1,0 +1,161 @@
+.shopping-cart-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 50px 0;
+  min-height: calc(100vh - 120px);
+  background-color: #444;
+}
+
+.cart-container {
+  width: 100%;
+  max-width: 800px;
+  background-color: #1a1a1a;
+  border: 3px solid #92FF71;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 0 15px rgba(146, 255, 113, 0.3);
+  color: white;
+}
+
+.cart-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  border-bottom: 2px solid #92FF71;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+/* --- LISTADO DE ITEMS --- */
+.item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  background-color: #2b2b2b;
+  border-radius: 8px;
+  padding: 10px 15px;
+  border: 1px solid #333;
+  transition: box-shadow 0.2s;
+}
+
+.cart-item:hover {
+  box-shadow: 0 0 8px rgba(146, 255, 113, 0.4);
+}
+
+.item-image {
+  width: 80px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #92FF71;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.item-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+}
+
+.item-author, .item-category {
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+/* --- ACCIONES Y PRECIO DEL ITEM --- */
+.item-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.item-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #92FF71;
+}
+
+.remove-button {
+  color: #aaa !important;
+  transition: color 0.2s;
+}
+
+.remove-button:hover {
+  color: #ff6347 !important;
+}
+
+/* --- RESUMEN Y CHECKOUT --- */
+.cart-summary {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid #333;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+}
+
+.summary-line {
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 300px;
+}
+
+.total-price {
+  color: #92FF71;
+}
+
+.checkout-button {
+  background-color: #92FF71 !important;
+  color: black !important;
+  font-weight: 700;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.checkout-button:hover {
+  background-color: #7eed5f !important;
+}
+
+/* --- ESTADOS VACÍOS/PROMPT --- */
+.empty-cart, .login-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 50px 0;
+  gap: 15px;
+}
+
+.empty-cart mat-icon, .login-prompt mat-icon {
+  font-size: 64px;
+  width: 64px;
+  height: 64px;
+  color: #92FF71;
+}
+
+.go-home-button {
+  background-color: #92FF71 !important;
+  color: black !important;
+  font-weight: 600;
+  margin-top: 10px;
+  border-radius: 8px;
+}

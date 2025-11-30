@@ -1,0 +1,57 @@
+<div class="shopping-cart-wrapper">
+
+  <div class="cart-container">
+    <h1 class="cart-title">{{"shopping-cart.title" | translate}}</h1>
+
+    @if (iamStore.currentAccount) {
+      @if (cartItemsDetail().length > 0) {
+
+        <div class="item-list">
+          @for (item of cartItemsDetail(); track item.game.id) {
+            <div class="cart-item">
+              <img [src]="item.game.image" alt="{{item.game.name}}" class="item-image">
+              <div class="item-details">
+                <span class="item-name">{{ item.game.name }}</span>
+                <span class="item-author">by {{ iamStore.getUserById(item.game.authorId)()?.name }}</span>
+                <span class="item-category">{{ item.game.category }}</span>
+              </div>
+
+              <div class="item-actions">
+                <span class="item-price">{{ item.game.price | currency:'USD':'symbol':'1.2-2' }}</span>
+
+                <button mat-icon-button class="remove-button"
+                        (click)="removeItem(item.game.id, item.game.price)"
+                        [title]="'shopping-cart.remove' | translate">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="cart-summary">
+          <div class="summary-line">
+            <span>{{"shopping-cart.subtotal" | translate}}:</span>
+            <span class="total-price">{{ totalPrice() | currency:'USD':'symbol':'1.2-2' }}</span>
+          </div>
+          <button mat-flat-button class="checkout-button" (click)="checkout()">
+            {{"shopping-cart.checkout" | translate}}
+          </button>
+        </div>
+
+      } @else {
+        <div class="empty-cart">
+          <mat-icon>shopping_cart</mat-icon>
+          <p>{{"shopping-cart.empty" | translate}}</p>
+          <a routerLink="/marketplace/home" mat-button class="go-home-button">{{"option.home" | translate}}</a>
+        </div>
+      }
+    } @else {
+      <div class="login-prompt">
+        <p>{{"shopping-cart.login_required" | translate}}</p>
+        <a routerLink="/log-in" mat-button class="go-home-button">{{"iam.log-in" | translate}}</a>
+      </div>
+    }
+
+  </div>
+</div>
