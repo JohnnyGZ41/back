@@ -1,0 +1,957 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Daniel Romero",
+      "phoneNumber": "+51 284596384"
+    },
+    {
+      "id": 2,
+      "name": "Lucía Paredes",
+      "phoneNumber": "+51 987654321"
+    },
+    {
+      "id": 3,
+      "name": "Carlos Méndez",
+      "phoneNumber": "+51 910111213"
+    },
+    {
+      "id": 4,
+      "name": "María Gutiérrez",
+      "phoneNumber": "+51 923456789"
+    },
+    {
+      "id": 5,
+      "name": "Javier Torres",
+      "phoneNumber": "+51 934567890"
+    },
+    {
+      "id": 6,
+      "name": "Andrea Navarro",
+      "phoneNumber": "+51 945678901"
+    },
+    {
+      "id": 7,
+      "name": "Miguel Salas",
+      "phoneNumber": "+51 956789012"
+    },
+    {
+      "id": 8,
+      "name": "Valeria Cruz",
+      "phoneNumber": "+51 967890123"
+    },
+    {
+      "id": 9,
+      "name": "Alejandro Ramos",
+      "phoneNumber": "+51 978901234"
+    },
+    {
+      "id": 10,
+      "name": "Gabriela López",
+      "phoneNumber": "+51 989012345"
+    },
+    {
+      "id": 11,
+      "name": "Sofía Delgado",
+      "phoneNumber": "+51 990123456"
+    },
+    {
+      "id": 12,
+      "name": "Ricardo Peña",
+      "phoneNumber": "+51 901234567"
+    },
+    {
+      "id": 13,
+      "name": "Paula Herrera",
+      "phoneNumber": "+51 912345679"
+    },
+    {
+      "id": 14,
+      "name": "Diego Vega",
+      "phoneNumber": "+51 923456780"
+    },
+    {
+      "id": 15,
+      "name": "Natalia Ruiz",
+      "phoneNumber": "+51 934567891"
+    },
+    {
+      "id": 16,
+      "name": "Felipe Arce",
+      "phoneNumber": "+51 945678902"
+    },
+    {
+      "id": 17,
+      "name": "Camila Silva",
+      "phoneNumber": "+51 956789013"
+    },
+    {
+      "id": 18,
+      "name": "José Aguilar",
+      "phoneNumber": "+51 967890124"
+    },
+    {
+      "id": 19,
+      "name": "Florencia Ramos",
+      "phoneNumber": "+51 978901235"
+    },
+    {
+      "id": 20,
+      "name": "Emilio Cornejo",
+      "phoneNumber": "+51 989012346"
+    },
+    {
+      "id": 21,
+      "name": "johnnygz41",
+      "phoneNumber": "12345"
+    },
+    {
+      "id": 22,
+      "name": "johnnygz41",
+      "phoneNumber": "12345"
+    }
+  ],
+  "accounts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "email": "daniel.romero@example.com",
+      "password": "123",
+      "isActive": true,
+      "role": "PROGRAMMER"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "email": "lucia.paredes@example.com",
+      "password": "123",
+      "isActive": true,
+      "role": "PROGRAMMER"
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "email": "carlos.mendez@example.com",
+      "password": "123",
+      "isActive": false,
+      "role": "PROGRAMMER"
+    },
+    {
+      "id": 4,
+      "userId": 4,
+      "email": "maria.gutierrez@example.com",
+      "password": "123",
+      "isActive": true,
+      "role": "COMPOSER"
+    },
+    {
+      "id": 5,
+      "userId": 5,
+      "email": "javier.torres@example.com",
+      "password": "123",
+      "isActive": true,
+      "role": "PROGRAMMER"
+    },
+    {
+      "id": 6,
+      "userId": 6,
+      "email": "andrea.navarro@example.com",
+      "password": "123",
+      "isActive": true,
+      "role": "ARTIST"
+    },
+    {
+      "id": 7,
+      "userId": 7,
+      "email": "miguel.salas@example.com",
+      "password": "123",
+      "isActive": true,
+      "role": "STANDARD"
+    },
+    {
+      "id": 8,
+      "userId": 8,
+      "email": "valeria.cruz@example.com",
+      "password": "123",
+      "isActive": true,
+      "role": "COMPOSER"
+    },
+    {
+      "id": 9,
+      "userId": 9,
+      "email": "alejandro.ramos@example.com",
+      "password": "123",
+      "isActive": false,
+      "role": "STANDARD"
+    },
+    {
+      "id": 10,
+      "userId": 10,
+      "email": "gabriela.lopez@example.com",
+      "password": "123",
+      "isActive": true,
+      "role": "ARTIST"
+    },
+    {
+      "id": 11,
+      "userId": 11,
+      "email": "sofia.delgado@example.com",
+      "password": "123",
+      "isActive": true,
+      "role": "PROGRAMMER"
+    },
+    {
+      "id": 12,
+      "userId": 12,
+      "email": "ricardo.pena@example.com",
+      "password": "123",
+      "isActive": false,
+      "role": "STANDARD"
+    },
+    {
+      "id": 13,
+      "userId": 13,
+      "email": "paula.herrera@example.com",
+      "password": "123",
+      "isActive": true,
+      "role": "ARTIST"
+    },
+    {
+      "id": 14,
+      "userId": 14,
+      "email": "diego.vega@example.com",
+      "password": "123",
+      "isActive": true,
+      "role": "PROGRAMMER"
+    },
+    {
+      "id": 15,
+      "userId": 15,
+      "email": "natalia.ruiz@example.com",
+      "password": "123",
+      "isActive": true,
+      "role": "STANDARD"
+    },
+    {
+      "id": 16,
+      "userId": 16,
+      "email": "felipe.arce@example.com",
+      "password": "123",
+      "isActive": true,
+      "role": "COMPOSER"
+    },
+    {
+      "id": 17,
+      "userId": 17,
+      "email": "camila.silva@example.com",
+      "password": "123",
+      "isActive": true,
+      "role": "ARTIST"
+    },
+    {
+      "id": 18,
+      "userId": 18,
+      "email": "jose.aguilar@example.com",
+      "password": "123",
+      "isActive": false,
+      "role": "STANDARD"
+    },
+    {
+      "id": 19,
+      "userId": 19,
+      "email": "florencia.ramos@example.com",
+      "password": "123",
+      "isActive": true,
+      "role": "COMPOSER"
+    },
+    {
+      "id": 20,
+      "userId": 20,
+      "email": "emilio.cornejo@example.com",
+      "password": "123",
+      "isActive": true,
+      "role": "PROGRAMMER"
+    },
+    {
+      "id": 21,
+      "userId": 21,
+      "email": "johnnyundertale41@outlook.com",
+      "password": "123",
+      "isActive": true,
+      "role": "STANDARD"
+    },
+    {
+      "id": 22,
+      "userId": 22,
+      "email": "johnnyundertale41@outlook.com",
+      "password": "123",
+      "isActive": true,
+      "role": "STANDARD"
+    }
+  ],
+  "games": [
+    {
+      "id": 1,
+      "authorId": 1,
+      "name": "Shadow Haven",
+      "description": "Juego de terror atmosférico creado para explorar la psicología del miedo.",
+      "rating": 5,
+      "creationDate": "2024-02-12",
+      "price": 14.99,
+      "category": "HORROR",
+      "image": "https://i.ytimg.com/vi/RYQAFlEBCbU/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGD8gYihyMA8=&rs=AOn4CLB-iPaxYSLPzOOfZPxqHjA2YzZdqw"
+    },
+    {
+      "id": 2,
+      "authorId": 1,
+      "name": "Wilmot Works It Out",
+      "description": "Juego de acertijos con mecánicas físicas únicas y minimalistas.",
+      "rating": 4,
+      "creationDate": "2023-08-22",
+      "price": 9.99,
+      "category": "PUZZLE",
+      "image": "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000096218/85f6d89122120e66aaa53ebbb0461d12983fccf8c35343fbea2eb961aa9195ec"
+    },
+    {
+      "id": 3,
+      "authorId": 1,
+      "name": "Star Hammer: The Vanguard Prophecy",
+      "description": "Shooter FPS ambientado en una guerra galáctica futurista.",
+      "rating": 5,
+      "creationDate": "2023-09-10",
+      "price": 19.99,
+      "category": "FPS",
+      "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/337680/header.jpg?t=1726823616"
+    },
+    {
+      "id": 4,
+      "authorId": 1,
+      "name": "Echo Blade",
+      "description": "Juego tipo metroidvania con un toque de fantasía oscura.",
+      "rating": 4,
+      "creationDate": "2023-10-01",
+      "price": 17.5,
+      "category": "METROIDVANIA",
+      "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1422570/capsule_616x353.jpg?t=1747238177"
+    },
+    {
+      "id": 5,
+      "authorId": 1,
+      "name": "Pixel Odyssey",
+      "description": "Juego sandbox de exploración con arte pixelado y mundos generados.",
+      "rating": 5,
+      "creationDate": "2024-03-15",
+      "price": 12,
+      "category": "SANDBOX",
+      "image": "https://m.media-amazon.com/images/I/81pW7aYW6bL.png"
+    },
+    {
+      "id": 6,
+      "authorId": 1,
+      "name": "Dungeon Rift",
+      "description": "Juego RPG de mazmorras con sistema de combate táctico.",
+      "rating": 3,
+      "creationDate": "2023-05-01",
+      "price": 11.99,
+      "category": "RPG",
+      "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/375550/header.jpg?t=1496047035"
+    },
+    {
+      "id": 7,
+      "authorId": 16,
+      "name": "Crystal Sky",
+      "description": "Juego de plataformas con una historia emocional y banda sonora envolvente.",
+      "rating": 5,
+      "creationDate": "2024-01-18",
+      "price": 8.5,
+      "category": "PLATFORMER",
+      "image": "https://images.unsplash.com/photo-1620207418302-439b387441b0"
+    },
+    {
+      "id": 8,
+      "authorId": 11,
+      "name": "Survive-X",
+      "description": "Juego survival con énfasis en recolección y cooperación multijugador.",
+      "rating": 4,
+      "creationDate": "2024-04-10",
+      "price": 15.99,
+      "category": "SURVIVAL",
+      "image": "https://images.unsplash.com/photo-1542751110-97427bbecf20"
+    },
+    {
+      "id": 9,
+      "authorId": 1,
+      "name": "Echo Mind",
+      "description": "Juego psicológico tipo puzzle con diseño abstracto.",
+      "rating": 4,
+      "creationDate": "2023-11-22",
+      "price": 10,
+      "category": "PUZZLE",
+      "image": "https://play-lh.googleusercontent.com/8_RGjs5CjmyPrxxiXCjcyDfXRCvNtyLkZsxx-tGGd7iWbMKXiO_BHBiW2bET5eqfc4M"
+    },
+    {
+      "id": 10,
+      "authorId": 5,
+      "name": "Lightbound",
+      "description": "Juego RPG con combates por turnos y narrativa profunda.",
+      "rating": 5,
+      "creationDate": "2024-02-01",
+      "price": 18.99,
+      "category": "RPG",
+      "image": "https://images.unsplash.com/photo-1511512578047-dfb367046420"
+    },
+    {
+      "id": 11,
+      "authorId": 14,
+      "name": "Silent Rain",
+      "description": "Juego de terror minimalista inspirado en leyendas urbanas.",
+      "rating": 4,
+      "creationDate": "2023-10-15",
+      "price": 13.99,
+      "category": "HORROR",
+      "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836"
+    },
+    {
+      "id": 12,
+      "authorId": 20,
+      "name": "Code of the Abyss",
+      "description": "FPS táctico ambientado en mundos submarinos.",
+      "rating": 5,
+      "creationDate": "2024-05-30",
+      "price": 20,
+      "category": "FPS",
+      "image": "https://images.unsplash.com/photo-1581090700227-1e37b190418e"
+    },
+    {
+      "id": 13,
+      "authorId": 9,
+      "name": "Dreamscape",
+      "description": "Juego sandbox de creación libre y exploración onírica.",
+      "rating": 5,
+      "creationDate": "2023-12-05",
+      "price": 16.5,
+      "category": "SANDBOX",
+      "image": "https://images.unsplash.com/photo-1503264116251-35a269479413"
+    },
+    {
+      "id": 14,
+      "authorId": 16,
+      "name": "Runelight",
+      "description": "Juego de plataformas colorido con niveles desafiantes.",
+      "rating": 3,
+      "creationDate": "2023-11-11",
+      "price": 9.5,
+      "category": "PLATFORMER",
+      "image": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1"
+    },
+    {
+      "id": 15,
+      "authorId": 11,
+      "name": "Cipher",
+      "description": "Juego de acertijos narrativo con estética cibernética.",
+      "rating": 4,
+      "creationDate": "2024-03-22",
+      "price": 11.5,
+      "category": "PUZZLE",
+      "image": "https://images.unsplash.com/photo-1581092334707-8e85d56da818"
+    },
+    {
+      "id": 16,
+      "authorId": 1,
+      "name": "Void Exile",
+      "description": "RPG ambientado en un mundo oscuro donde cada decisión importa.",
+      "rating": 5,
+      "creationDate": "2023-07-19",
+      "price": 19,
+      "category": "RPG",
+      "image": "https://images.unsplash.com/photo-1611606063063-379b1a0b91c2"
+    },
+    {
+      "id": 17,
+      "authorId": 5,
+      "name": "Nebula",
+      "description": "Shooter FPS con ambientación espacial y físicas realistas.",
+      "rating": 5,
+      "creationDate": "2023-08-05",
+      "price": 21,
+      "category": "FPS",
+      "image": "https://images.unsplash.com/photo-1581091870622-7a3a5c15a3d2"
+    },
+    {
+      "id": 18,
+      "authorId": 14,
+      "name": "Lost Frame",
+      "description": "Juego metroidvania de ciencia ficción con arte 2D detallado.",
+      "rating": 4,
+      "creationDate": "2024-01-09",
+      "price": 18,
+      "category": "METROIDVANIA",
+      "image": "https://images.unsplash.com/photo-1620207418302-439b387441b0"
+    },
+    {
+      "id": 19,
+      "authorId": 20,
+      "name": "Aether Souls",
+      "description": "Juego sandbox cooperativo con construcción libre.",
+      "rating": 5,
+      "creationDate": "2024-06-18",
+      "price": 14,
+      "category": "SANDBOX",
+      "image": "https://images.unsplash.com/photo-1503264116251-35a269479413"
+    },
+    {
+      "id": 20,
+      "authorId": 16,
+      "name": "Chrono Rift",
+      "description": "RPG de viajes temporales con un sistema de decisiones complejas.",
+      "rating": 5,
+      "creationDate": "2023-09-25",
+      "price": 22,
+      "category": "RPG",
+      "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f"
+    }
+  ],
+  "arts": [
+    {
+      "id": 1,
+      "authorId": 1,
+      "name": "Retro City",
+      "description": "Fan art estilo pixel retro inspirado en videojuegos de los 80.",
+      "rating": 5,
+      "creationDate": "2023-06-10",
+      "image": "https://e1.pxfuel.com/desktop-wallpaper/457/678/desktop-wallpaper-pixel-art-retro-video-game-pixel-art-retro-thumbnail.jpg",
+      "category": "PIXEL_ART"
+    },
+    {
+      "id": 2,
+      "authorId": 1,
+      "name": "Celestial Dream",
+      "description": "Concept art de un universo celestial con colores suaves.",
+      "rating": 4,
+      "creationDate": "2023-07-15",
+      "image": "https://www.shutterstock.com/image-vector/captivating-watercolor-artwork-features-vast-600nw-2624984053.jpg",
+      "category": "CONCEPT_ART"
+    },
+    {
+      "id": 3,
+      "authorId": 1,
+      "name": "Hero Awakens",
+      "description": "Poster épico de un héroe emergiendo del caos.",
+      "rating": 5,
+      "creationDate": "2023-08-20",
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgHkkouUsUIr4D9kDpbW1868tQZ0sLyCjm_uxqsamnyUkYyiKAYohmK7mX9LGMXTad6M43Lb1KOueN1sB4E4lRRzBI-ZQP8o_4suyKgGVhkQg4dgZ4XdGuEoghYV8jPL7FCV_DY1TKD8mawy_iVUk8_94LpxcISX7IvfKh9e6z8sHBVuLcoZwsI1Kc/s2727/FFANNUAL2023001_Cov.jpg",
+      "category": "POSTER"
+    },
+    {
+      "id": 4,
+      "authorId": 1,
+      "name": "Forest Spirit",
+      "description": "Diseño de personaje inspirado en criaturas del bosque.",
+      "rating": 4,
+      "creationDate": "2023-09-30",
+      "image": "https://i.pinimg.com/236x/98/2e/78/982e785012dd454fe708839654c8a92c.jpg",
+      "category": "CHARACTER_DESIGN"
+    },
+    {
+      "id": 5,
+      "authorId": 1,
+      "name": "Dreamwalker",
+      "description": "Fondo surrealista que representa el límite entre sueño y realidad.",
+      "rating": 5,
+      "creationDate": "2023-10-11",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReu1xRLf_PzSWxZ5D_v_OrtDf89D6XyicK5A&s",
+      "category": "BACKGROUND_DESIGN"
+    },
+    {
+      "id": 6,
+      "authorId": 19,
+      "name": "Star Symphony",
+      "description": "Fan art inspirado en compositores de videojuegos clásicos.",
+      "rating": 4,
+      "creationDate": "2023-11-02",
+      "image": "art6.jpg",
+      "category": "FAN_ART"
+    },
+    {
+      "id": 7,
+      "authorId": 2,
+      "name": "Cyber Echo",
+      "description": "Poster futurista con temática cibernética.",
+      "rating": 4,
+      "creationDate": "2023-12-01",
+      "image": "art7.jpg",
+      "category": "POSTER"
+    },
+    {
+      "id": 8,
+      "authorId": 6,
+      "name": "Ancient Light",
+      "description": "Concept art de templos antiguos y energía mística.",
+      "rating": 5,
+      "creationDate": "2024-01-15",
+      "image": "art8.jpg",
+      "category": "CONCEPT_ART"
+    },
+    {
+      "id": 9,
+      "authorId": 10,
+      "name": "Skyward",
+      "description": "Diseño de personaje de una guerrera aérea.",
+      "rating": 4,
+      "creationDate": "2024-02-11",
+      "image": "art9.jpg",
+      "category": "CHARACTER_DESIGN"
+    },
+    {
+      "id": 10,
+      "authorId": 13,
+      "name": "Desert Bloom",
+      "description": "Ilustración ambiental con tonos cálidos.",
+      "rating": 3,
+      "creationDate": "2024-03-09",
+      "image": "art10.jpg",
+      "category": "BACKGROUND_DESIGN"
+    }
+  ],
+  "audios": [
+    {
+      "id": 1,
+      "authorId": 1,
+      "name": "Nightfall Theme",
+      "description": "Banda sonora atmosférica con tonos melancólicos.",
+      "rating": 5,
+      "creationDate": "2024-02-01",
+      "audioUrl": "audio1.mp3",
+      "format": "mp3",
+      "category": "SOUNDTRACK",
+      "image": "https://cdn.pixabay.com/audio/2024/12/10/16-09-48-621_200x200.jpg"
+    },
+    {
+      "id": 2,
+      "authorId": 1,
+      "name": "Dream Sequence",
+      "description": "Audio ambiental instrumental para juegos de exploración.",
+      "rating": 4,
+      "creationDate": "2023-09-15",
+      "audioUrl": "audio2.mp3",
+      "format": "mp3",
+      "category": "INSTRUMENTAL",
+      "image": "https://cdn.pixabay.com/audio/2024/02/24/11-16-48-25_200x200.jpg"
+    },
+    {
+      "id": 3,
+      "authorId": 1,
+      "name": "Echoing Depths",
+      "description": "Efecto de sonido de cueva con reverberaciones realistas.",
+      "rating": 5,
+      "creationDate": "2023-08-20",
+      "audioUrl": "audio3.wav",
+      "format": "wav",
+      "category": "SOUND_EFFECT",
+      "image": "https://cdn.pixabay.com/audio/2024/12/11/22-46-20-405_200x200.jpg"
+    },
+    {
+      "id": 4,
+      "authorId": 1,
+      "name": "Voice of Dawn",
+      "description": "Grabación de voz narrativa para introducciones de juego.",
+      "rating": 4,
+      "creationDate": "2023-07-11",
+      "audioUrl": "audio4.mp3",
+      "format": "mp3",
+      "category": "VOICE_ACTING",
+      "image": "https://cdn.pixabay.com/audio/2022/11/02/07-14-11-711_200x200.jpg"
+    },
+    {
+      "id": 5,
+      "authorId": 4,
+      "name": "Lost Echo",
+      "description": "Composición emocional con instrumentos de cuerda.",
+      "rating": 5,
+      "creationDate": "2023-11-23",
+      "audioUrl": "audio5.mp3",
+      "format": "mp3",
+      "category": "SOUNDTRACK",
+      "image": "https://cdn.pixabay.com/audio/2022/11/04/22-21-08-931_200x200.jpg"
+    }
+  ],
+  "portfolios": [
+    {
+      "id": 1,
+      "creationDate": "2024-03-12",
+      "gameIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "audioIds": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "artIds": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": 2,
+      "creationDate": "2024-03-15",
+      "gameIds": [
+        3,
+        8,
+        15
+      ]
+    },
+    {
+      "id": 3,
+      "creationDate": "2024-03-17",
+      "gameIds": [
+        2,
+        10,
+        17
+      ]
+    },
+    {
+      "id": 4,
+      "creationDate": "2024-03-20",
+      "gameIds": [
+        4,
+        11,
+        18
+      ]
+    },
+    {
+      "id": 5,
+      "creationDate": "2024-03-21",
+      "gameIds": [
+        5,
+        12,
+        19
+      ]
+    },
+    {
+      "id": 6,
+      "creationDate": "2024-03-22",
+      "gameIds": [
+        6,
+        13,
+        20
+      ]
+    }
+  ],
+  "group-projects": {},
+  "profiles": [
+    {
+      "id": 1,
+      "description": "Desarrollador apasionado por crear experiencias interactivas únicas.",
+      "creationDate": "2024-04-10",
+      "image": "https://img.freepik.com/vector-gratis/circulo-azul-usuario-blanco_78370-4707.jpg?semt=ais_hybrid&w=740&q=80",
+      "accountId": 1,
+      "portfolioId": 1,
+      "groupProjectIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": 2,
+      "description": "Artista digital especializada en ilustración y pixel art.",
+      "creationDate": "2024-04-12",
+      "image": "https://img.freepik.com/vector-gratis/circulo-azul-usuario-blanco_78370-4707.jpg?semt=ais_hybrid&w=740&q=80",
+      "accountId": 2,
+      "portfolioId": 2,
+      "groupProjectIds": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": 3,
+      "description": "Amante del desarrollo web y la creación de herramientas útiles.",
+      "creationDate": "2024-04-14",
+      "image": "https://img.freepik.com/vector-gratis/circulo-azul-usuario-blanco_78370-4707.jpg?semt=ais_hybrid&w=740&q=80",
+      "accountId": 3,
+      "portfolioId": 3,
+      "groupProjectIds": [
+        3,
+        4
+      ]
+    },
+    {
+      "id": 4,
+      "description": "Compositora autodidacta con experiencia en música para videojuegos.",
+      "creationDate": "2024-04-16",
+      "image": "https://img.freepik.com/vector-gratis/circulo-azul-usuario-blanco_78370-4707.jpg?semt=ais_hybrid&w=740&q=80",
+      "accountId": 4,
+      "portfolioId": 4,
+      "groupProjectIds": [
+        1,
+        4
+      ]
+    },
+    {
+      "id": 5,
+      "description": "Programador enfocado en diseño de juegos de exploración.",
+      "creationDate": "2024-04-18",
+      "image": "https://img.freepik.com/vector-gratis/circulo-azul-usuario-blanco_78370-4707.jpg?semt=ais_hybrid&w=740&q=80",
+      "accountId": 5,
+      "portfolioId": 5,
+      "groupProjectIds": [
+        5,
+        6
+      ]
+    },
+    {
+      "id": 6,
+      "description": "",
+      "creationDate": "2025-11-08T22:22:31.922Z",
+      "image": "https://img.freepik.com/vector-gratis/circulo-azul-usuario-blanco_78370-4707.jpg?semt=ais_hybrid&w=740&q=80",
+      "accountId": 21,
+      "portfolioId": null,
+      "groupProjectIds": null
+    },
+    {
+      "id": 7,
+      "description": "",
+      "creationDate": "2025-11-08T22:22:33.922Z",
+      "image": "https://img.freepik.com/vector-gratis/circulo-azul-usuario-blanco_78370-4707.jpg?semt=ais_hybrid&w=740&q=80",
+      "accountId": 22,
+      "portfolioId": null,
+      "groupProjectIds": null
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "userId": 1,
+      "projectId": 3,
+      "comment": "Excelente trabajo visual y gran jugabilidad.",
+      "rating": 5,
+      "creationDate": "2024-02-10"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "projectId": 1,
+      "comment": "El ambiente sonoro es impresionante.",
+      "rating": 4,
+      "creationDate": "2024-03-11"
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "projectId": 2,
+      "comment": "Podría mejorar el sistema de niveles, pero muy entretenido.",
+      "rating": 3,
+      "creationDate": "2024-03-13"
+    },
+    {
+      "id": 4,
+      "userId": 4,
+      "projectId": 4,
+      "comment": "El diseño artístico es precioso.",
+      "rating": 5,
+      "creationDate": "2024-03-15"
+    },
+    {
+      "id": 5,
+      "userId": 5,
+      "projectId": 5,
+      "comment": "Gran potencial, me encantó la historia.",
+      "rating": 4,
+      "creationDate": "2024-03-17"
+    }
+  ],
+  "publications": [
+    {
+      "id": 1,
+      "userId": 1,
+      "title": "Pilgrims who reached the Citadel",
+      "comment": null,
+      "image": "https://i.redd.it/nkmew56jv9yf1.jpeg",
+      "creationDate": "2024-12-30T02:29:56.437Z"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "title": "Fun game. 10/10. Will play again.",
+      "comment": null,
+      "image": "https://i.redd.it/1fnp4b3tu9yf1.png",
+      "creationDate": "2024-07-30T02:29:56.437Z"
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "title": "Clover dancers hitbox needs to be fixed.",
+      "comment": "The bossfight isnt difficult at all but that doesn't mean the hitboxes have to be this dogshit. Like these 2 frail, slender bugs have the contact damage of 2 john deer tractors. I struggled with this fight more than most other act 3 fights simply because i would get hit just trying to exist in the same plane of existence.",
+      "image": null,
+      "creationDate": "2024-08-30T02:29:56.437Z"
+    },
+    {
+      "id": 4,
+      "userId": 4,
+      "title": "What features would you like to see in future updates?",
+      "comment": "I want Team Cherry to add a feature where after beating act 3, you can swap between either the act 1 and 2 version of Pharloom or act 3’s version of Pharloom.",
+      "image": null,
+      "creationDate": "2024-11-30T02:29:56.437Z"
+    },
+    {
+      "id": 5,
+      "userId": 5,
+      "title": "Is he the biggest FRAUD in all of Pharloom?",
+      "comment": "Bro poses as the fastest yet flies for like 70% of course. I thought we were measuring running speed and not whatever he does (everyone ignore clawline)",
+      "image": "https://i.redd.it/oihxqgduf9yf1.jpeg",
+      "creationDate": "2025-10-30T02:29:56.437Z"
+    }
+  ],
+  "shopping-carts": [
+    {
+      "id": 1,
+      "profileId": 6,
+      "gameIds": [
+        3
+      ],
+      "creationDate": "2025-11-13T03:13:23.571Z",
+      "price": 19.990000000000006
+    }
+  ],
+  "answers": [
+    {
+      "id": 1,
+      "userId": 1,
+      "publicationId": 1,
+      "comment": "real i wish they kept the big voltnest they had in concept",
+      "creationDate": "2024-03-17"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "publicationId": 1,
+      "comment": "This is what we get for complaining about the wait",
+      "creationDate": "2025-10-30T13:30:10.035Z"
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "publicationId": 2,
+      "comment": "If you believe in something as hard as you can, with your eyes shut tight... eventually it will come true!",
+      "creationDate": "2025-10-30T13:30:20.635Z"
+    },
+    {
+      "id": 4,
+      "userId": 4,
+      "publicationId": 2,
+      "comment": "Voltwyrm feels like a standard enemy for what was supposed to be a bigger area, but ultimately they didn't have time/ideas for more so they just buffed its stats and made it a boss",
+      "creationDate": "2025-10-30T13:32:45.197Z"
+    }
+  ]
+}

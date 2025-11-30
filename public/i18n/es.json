@@ -1,0 +1,128 @@
+{
+  "option": {
+    "home": "Inicio",
+    "sign-up": "Registrarse",
+    "log-in": "Iniciar Sesión",
+    "forum": "Foro"
+  },
+  "iam": {
+
+    "user": "Usuario",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "confirm_password": "Confirmar contraseña",
+    "phone": "Número de teléfono",
+    "log-in": "Iniciar sesión",
+    "sign-up": "Registrarse",
+
+    "errors": {
+      "required": "Campo requerido",
+      "invalid": "Campo inválido",
+      "mismatch": "Las contraseñas no coinciden",
+      "credentials": "Credenciales no encontradas"
+    }
+  },
+
+  "forum": {
+    "title": "Foro de IndieNest "
+  },
+
+  "publication": {
+    "new": "Nueva publicación",
+    "created": "Creado el",
+    "title": "Titulo",
+    "comments": "Ver comentarios",
+    "comment": "Comentario",
+    "image": "Imagen",
+    "create": "Crear",
+    "cancel": "Cancelar"
+  },
+
+  "answer": {
+    "write": "Escribe una respuesta...",
+    "cancel": "Cancelar",
+    "comment": "Comentar"
+  },
+
+  "profile":{
+    "edit": "Editar perfil",
+    "cancel": "Cancelar",
+    "update": "Actualizar",
+    "name": "Nombre",
+    "phone": "Teléfono",
+    "description": "Descripción"
+  },
+  "portfolio": {
+    "name": "Portafolio",
+    "games": "Juegos",
+    "audios": "Audios",
+    "arts": "Artes",
+    "new": "+ Añadir"
+  },
+  "new-project": {
+    "title": "Nuevo Proyecto",
+    "name": "Nombre",
+    "description": "Descripción",
+    "type": "Tipo de proyecto",
+    "category": "Categoría",
+    "image": "Imagen",
+    "cancel": "Cancelar",
+    "create": "Crear"
+  },
+  "game": {
+    "name": "Juego",
+    "price": "Precio",
+    "add-to-cart": "Añadir al carrito"
+  },
+  "audio": {
+    "name": "Audio",
+    "url": "Url del audio",
+    "format": "Formato"
+  },
+  "art": {
+    "name": "Arte"
+  },
+  "marketplace": {
+    "games": "Juegos",
+    "audios": "Audios",
+    "arts": "Artes",
+    "profiles": "Perfiles",
+    "featured-games": "Juegos destacados",
+    "featured-audios": "Audios destacados",
+    "featured-arts": "Artes destacados",
+    "view-all": "Ver todos"
+  },
+  "project-view": {
+    "results": "Resultados",
+    "best-rated": "Mejor valorados",
+    "new": "Nuevos",
+    "reviews": "Reseña(s)",
+    "not-found": {
+      "art": "Artes no encontrados",
+      "game": "Juegos no encontrados",
+      "audio": "Audios no encontrados",
+      "try": "Prueba otra búsqueda"
+    }
+  },
+  "profile-view": {
+    "results": "Resultados",
+    "standard": "Estándar",
+    "developer": "Desarrolladores",
+    "artist": "Artistas",
+    "composer": "Compositores",
+    "not-found": {
+      "profile": "Perfil no encontrado",
+      "try": "Prueba otra búsqueda"
+    }
+  },
+  "placeholder": {
+    "search": "Buscar"
+  },
+  "shopping-cart": {
+    "title": "Carrito de compras",
+    "login_required": "Debe iniciar sesión para acceder a su carrito de compra.",
+    "subtotal": "Sub-total",
+    "checkout": "Finalizar compra"
+  }
+
+}

@@ -1,0 +1,1393 @@
+@startuml
+
+package project.domain.model{
+    enum GameCategory<<Enum>>{
+        HORROR
+        ACTION
+        RPG
+        SANDBOX
+        PLATFORMER
+        PUZZLE
+        SPORTS
+    }
+    enum ArtCategory<<Enum>>{
+        PIXEL_ART
+        POSTER
+        FAN_ART
+        CHARACTER_DESIGN
+        CONCEPT_ART
+    }
+    enum AudioCategory<<Enum>>{
+        SOUNDTRACK
+        INSTRUMENTAL
+        VOICE
+        SOUND_EFFECT
+        OTHER
+    }
+    abstract class Project <<abstract>>{
+        #_id: number
+        #_name: string
+        #_creationDate: string
+        #_autor: string
+        #_description: string
+        #_rating: number
+        #reviews: Review[]
+        --
+        +constructor(project: object)
+        +get id(): number
+        +get name(): string
+        +get creationDate(): string
+        +get autor(): string
+        +get description(): string
+        +get rating(): number
+        +get reviews(): Review[]
+        +set name(val: string): void
+        +set description(val: string): void
+        +set rating(val: number): void
+    }
+    class Game<<Entity>> extends Project{
+        -_price: number
+        -_image: string
+        -_category: GameCategory
+        --
+        +constructor(game{}: object)
+        +get price(): number
+        +get image(): string
+        +get category(): GameCategory
+        +set price(val: number): void
+        +set image(val: string): void
+        +set category(val: GameCategory): void
+    }
+
+    class Art<<Entity>> extends Project{
+        -_image: string
+        -_category: ArtCategory
+        --
+        +constructor(art{}: object)
+        +get image(): string
+        +get category(): ArtCategory
+        +set image(val: string): void
+        +set category(val: ArtCategory): void
+    }
+    class Audio<<Entity>> extends Project{
+        -_audioUrl: string
+        -_format: string
+        -_category: AudioCategory
+        --
+        +constructor(audio{}: object)
+        +get audioUrl(): string
+        +get format(): string
+        +get category(): AudioCategory
+        +set audioUrl(val: string): void
+        +set format(val: string): void
+        +set category(val: AudioCategory): void
+    }
+}
+
+package project.infrastructure.Resources{
+    interface GameResource <<Resource>>{
+        id: number
+        name: string
+        creationDate: string
+        autor: string
+        description: string
+        rating: number
+        reviews: ReviewResource[]
+        price: string
+        image: string
+        category: GameCategory
+    }
+    interface ArtResource <<Resource>>{
+        id: number
+        name: string
+        creationDate: string
+        autor: string
+        description: string
+        rating: number
+        reviews: ReviewResource[]
+        image: string
+        category: ArtCategory
+    }
+    interface AudioResource <<Resource>>{
+        id: number
+        name: string
+        creationDate: string
+        autor: string
+        description: string
+         rating: number
+        reviews: ReviewResource[]
+        audioUrl: string
+        format: string
+        category: AudioCategory
+    }
+
+}
+
+package project.infrastructure.Responses{
+    interface GamesResponse <<Response>>{
+        games: GameResource[]
+    }
+    interface ArtsResponse <<Response>>{
+        arts: ArtResource[]
+    }
+    interface AudiosResponse <<Response>>{
+        audios: AudioResource[]
+    }
+}
+
+package project.infrastructure.assemblers{
+    class GameAssembler <<Assembler>>{
+        +toEntityFromResource(resource: GameResource): Game
+        +toEntitiesFromResponse(response: GamesResponse): Game[]
+        +toResourceFromEntity(entity: Game): GameResource
+    }
+    class ArtAssembler <<Assembler>>{
+        +toEntityFromResource(resource: ArtResource): Art
+        +toEntitiesFromResponse(response: ArtsResponse): Art[]
+        +toResourceFromEntity(entity: Art): ArtResource
+    }
+    class AudioAssembler <<Assembler>>{
+        +toEntityFromResource(resource: AudioResource): Audio
+        +toEntitiesFromResponse(response: AudiosResponse): Audio[]
+        +toResourceFromEntity(entity: Audio): AudioResource
+    }
+}
+
+package project.infrastructure.services{
+    class GamesApiEndpoint<<Service>>{
+        +constructor(http: HttpClient)
+    }
+    class ArtsApiEndpoint<<Service>>{
+        +constructor(http: HttpClient)
+    }
+    class AudiosApiEndpoint<<Service>>{
+        +constructor(http: HttpClient)
+    }
+    class ProjectApi<<Service>>{
+        -gamesEndpoint: GamesApiEndpoint
+        -artsEndpoint: ArtsApiEndpoint
+        -audiosEndpoint: AudiosApiEndpoint
+        --
+        +constructor(http: HttpClient)
+        --
+        +getGames(): Observable<Game[]>
+        +getGame(id: number): Observable<Game>
+        +createGame(game: Game): Observable<Game>
+        +updateGame(game: Game): Observable<Game>
+        +deleteGame(id: number): Observable<void>
+        --
+        +getArts(): Observable<Art[]>
+        +getArt(id: number): Observable<Art>
+        +createArt(game: Game): Observable<Art>
+        +updateArt(game: Game): Observable<Art>
+        +deleteArt(id: number): Observable<void>
+        --
+        +getAudios(): Observable<Audio[]>
+        +getAudio(id: number): Observable<Audio>
+        +createAudio(game: Game): Observable<Audio>
+        +updateAudio(game: Game): Observable<Audio>
+        +deleteArt(id: number): Observable<void>
+    }
+}
+
+package project.application{
+    class ProjectStore <<Store>>{
+        -gamesSignal: WritableSignal<Game[]>
+        -audiosSignal: WritableSignal<Audio[]>
+        -artsSignal: WritableSignal<Art[]>
+        +games: Signal<Game[]>
+        +audios: Signal<Audio[]>
+        +arts: Signal<Art[]>
+        -projectApi: ProjectApi
+        --
+        +constructor(projectApi: ProjectApi)
+        -loadGames(): void
+        -loadAudios(): void
+        -loadArts(): void
+        --
+        +getGameById(id: number): Signal<Game | undefined>
+        +addGame(game: Game): void
+        +updateGame(updatedGame: Game): void
+        +deleteGame(id: number): void
+        --
+        +getArtById(id: number): Signal<Art | undefined>
+        +addArt(art: Art): void
+        +updateArt(updatedArt: art): void
+        +deleteArt(id: number): void
+        --
+        +getAudioById(id: number): Signal<Audio | undefined>
+        +addAudio(audio: Audio): void
+        +updateAudio(updatedAudio: Audio): void
+        +deleteAudio(id: number): void
+    }
+}
+
+package "project.presentation.views"{
+    class GameProjectView{
+        projectStore: ProjectStore
+        game: Game
+    }
+    class ArtProjectView{
+        projectStore: ProjectStore
+        art: Art
+    }
+    class AudioProjectView{
+        projectStore: ProjectStore
+        audio: Audio
+    }
+}
+
+
+'********************************************************************************************'
+'********************************************************************************************'
+'********************************************************************************************'
+
+
+package marketplace.presentation.components{
+    class GameItem <<Component>>{
+        game: Game(input)
+    }
+    class ArtItem <<Component>>{
+        art: Art(input)
+    }
+    class AudioItem <<Component>>{
+        audio: Audio(input)
+    }
+    class DeveloperItem <<Component>>{
+        developer: Profile(input)
+    }
+}
+
+package "marketplace.presentation.views"{
+    class Home <<View>>{
+        projectStore: ProjectStore
+        profileStore: ProfileStore
+        games: Game[]
+        arts: Art[]
+        audios: Audio[]
+        developers: Profile[]
+    }
+    class GamesView <<View>>{
+        projectStore: ProjectStore
+        games: Game[]
+    }
+    class ArtsView <<View>>{
+         projectStore: ProjectStore
+         arts: Art[]
+    }
+    class AudiosView<<View>>{
+          projectStore: ProjectStore
+          audios: Audio[]
+    }
+    class DevelopersView<<View>>{
+        profileStore: ProfileStore
+        developers: Profile[]
+    }
+}
+
+'********************************************************************************************'
+'********************************************************************************************'
+'********************************************************************************************'
+
+package profile.domain.model{
+
+    class Portfolio <<Aggregate>>{
+        -_id: number
+        -_creationDate: string
+        -_games: Game[]
+        --
+        +constructor(portfolio{}: object)
+        +get id(): number
+        +get creationDate(): string
+        +get games(): Game[]
+        +set games(val: Game[]): void
+    }
+
+    class GroupProject <<Aggregate>>{
+        -_id: number
+        -_memberIds: number[]
+        -_game: Game
+        --
+        constructor(groupProject{}: object)
+        +get id(): number
+        +get memberIds(): number[]
+        +get game(): Game
+    }
+
+    class Profile <<Aggregate root>>{
+        -_id: number
+        -_description: string
+        -_creationDate: string
+        -_image: string
+        -_account: Account
+        -_portfolio: Portfolio
+        -_groupProjectIds: number[]
+        --
+        +constructor(profile{}: object)
+        +get id(): number
+        +get description(): string
+        +get creationDate(): string
+        +get image(): string
+        +get account(): Account
+        +get portfolio(): Portfolio
+        +get groupProjectIds(): number[]
+        +set description(val: string): void
+        +set creationDate(val: string): void
+        +set image(val: string): void
+        +set portfolio(val: Portfolio): void
+    }
+}
+
+package profile.infrastructure.resources{
+    interface PortfolioResource <<Resource>>{
+        id: number
+        creationDate: string
+        games: GameResource[]
+    }
+    interface GroupProjectResource <<Resource>>{
+        id: number
+        memberIds: number[]
+        game: GameResource
+    }
+    interface ProfileResource <<Resource>>{
+        id: number
+        description: string
+        creationDate: string
+        image: string
+        account: AccountResource
+        portfolio: PortfolioResource
+        projectIds: number[]
+    }
+}
+
+package profile.infrastructure.responses{
+    interface PortfoliosResponse <<Response>>{
+        portfolios: PortfolioResource[]
+    }
+    interface GroupProjectsResponse <<Response>>{
+        projects: ProjectResource[]
+    }
+    interface ProfilesResponse <<Response>>{
+        profiles: ProfileResource[]
+    }
+}
+
+package profile.infrastructure.assemblers{
+    class PortfolioAssembler <<Assembler>>{
+        +toEntityFromResource(resource: PortfolioResource): Portfolio
+        +toEntitiesFromResponse(response: PortfoliosResponse): Portfolio[]
+        +toResourceFromEntity(entity: Portfolio): PortfolioResource
+    }
+    class GroupProjectAssembler <<Assembler>>{
+        +toEntityFromResource(resource: GroupProjectResource): GroupProject
+        +toEntitiesFromResponse(response: GroupProjectsResponse): GroupProject[]
+        +toResourceFromEntity(entity: GroupProject): GroupProjectResource
+    }
+    class ProfileAssembler <<Assembler>>{
+        +toEntityFromResource(resource: ProfileResource): Profile
+        +toEntitiesFromResponse(response: ProfilesResponse): Profile[]
+        +toResourceFromEntity(entity: Profile): ProfileResource
+    }
+}
+package profile.infrastructure.services{
+    class PortfoliosApiEndpoint <<Service>>{
+        +constructor(http: HttpClient)
+    }
+    class GroupProjectsApiEndpoint <<Service>>{
+        +constructor(http: HttpClient)
+    }
+    class ProfilesApiEndpoint <<Service>>{
+        +constructor(http: HttpClient)
+    }
+    class ProfileApi <<service>>{
+        -portfoliosEndpoint: PortfoliosApiEndpoint
+        -groupProjectsEndpoint: GroupProjectsApiEndpoint
+        -profilesEndpoint: ProfilesApiEndpoint
+        --
+        +constructor(http: HttpClient)
+        +getPortfolios(): Observable<Portfolio[]>
+        +getPortfolio(id: number): Observable<Portfolio>
+        +createPortfolio(portfolio: Portfolio): Observable<Portfolio>
+        +updatePortfolio(portfolio: Portfolio): Observable<Portfolio>
+        +deletePortfolio(id: number): Observable<void>
+        --
+        +getGroupProjects(): Observable<GroupProject[]>
+        +getGroupProject(id: number): Observable<GroupProject>
+        +createGroupProject(project: Project): Observable<GroupProject>
+        +updateGroupProject(project: Project): Observable<GroupProject>
+        +deleteGroupProject(id: number): Observable<void>
+        --
+        +getProfiles(): Observable<Profile[]>
+        +getProfile(id: number): Observable<Profile>
+        +createProfile(profile: Profile): Observable<Profile>
+        +updateProfile(profile: Profile): Observable<Profile>
+        +deleteProfile(id: number): Observable<void>
+    }
+}
+
+package profile.application{
+    class ProfileStore <<Store>>{
+        -portfoliosSignal: WritableSignal<Portfolio[]>
+        -groupProjectsSignal: WritableSignal<GroupProject[]>
+        -profilesSignal: WritableSignal<Profile[]>
+        +portfolios: Signal<Portfolio[]>
+        +groupProjects: Signal<GroupProject[]>
+        +profiles: Signal<Profile[]>
+        -profileApi: ProfileApi
+        --
+        +constructor(profileApi: ProfileApi)
+        -loadPortfolios(): void
+        -loadGroupProjects(): void
+        -loadProfiles(): void
+        --
+        +getPortfolioById(id: number): Signal<Portfolio | undefined>
+        +addPortfolio(portfolio: Portfolio): void
+        +updatePortfolio(updatedPortfolio: Portfolio): void
+        +deletePortfolio(id: number): void
+        --
+        +getGroupProjectById(id: number): Signal<GroupProject | undefined>
+        +addGroupProject(groupProject: GroupProject): void
+        +updateGroupProject(updatedGroupProject: GroupProject): void
+        +deleteGroupProject(id: number): void
+        --
+        +getProfileById(id: number): Signal<Profile | undefined>
+        +addProfile(profile: Profile): void
+        +updateProfile(updatedProfile: Profile): void
+        +deleteProfile(id: number): void
+    }
+}
+package profile.presentation.components{
+    class PortfolioItem <<Component>>{
+        portfolio: Portfolio(input)
+    }
+    class GroupProjectItem <<Component>>{
+        groupProject: GroupProject(input)
+    }
+}
+
+package profile.presentation.views{
+    class ProfileView <<View>>{
+        profile: Profile(input)
+        profileStore: ProfileStore
+        portfolios: Portfolio[]
+        groupProjects: GroupProject[]
+    }
+}
+
+'********************************************************************************************'
+'********************************************************************************************'
+'********************************************************************************************'
+
+package support.domain.model{
+    class Review<<Aggregate root>>{
+        -_id: number
+        -_user: User
+        -_comment: string
+        -_rating: number
+        -_creationDate: string
+        --
+        +constructor(review{}: object)
+        +get id(): number
+        +get user(): User
+        +get comment(): string
+        +get rating(): number
+        +get creationDate(): string
+    }
+}
+package support.infrastructure.resources{
+    interface ReviewResource <<Resource>>{
+        id: number
+        user: UserResource
+        comment: string
+        rating: number
+        creationDate: string
+    }
+}
+package support.infrastructure.responses{
+    interface ReviewsResponse <<Response>>{
+        reviews: ReviewResource[]
+    }
+}
+package support.infrastructure.assemblers{
+    class ReviewAssembler <<Assembler>>{
+        +toEntityFromResource(resource: ReviewResource): Review
+        +toEntitiesFromResponse(response: ReviewsResponse): Review[]
+        +toResourceFromEntity(entity: Review): ReviewResource
+    }
+}
+package support.infrastructure.services{
+    class ReviewsApiEndpoint <<Service>>{
+        +constructor(http: HttpClient)
+    }
+    class SupportApi <<Service>>{
+        -reviewsEndpoint: ReviewsApiEndpoint
+        --
+        +constructor(http: HttpClient)
+        +getReviews(): Observable<Review[]>
+        +getReview(id: number): Observable<Review>
+        +createReview(review: Review): Observable<Review>
+        +updateReview(review: Review): Observable<Review>
+        +deleteReview(id: number): Observable<void>
+    }
+}
+package support.application{
+    class SupportStore <<Store>>{
+        -reviewsSignal: WritableSignal<Review[]>
+        +reviews: Signal<Review[]>
+        -supportApi: SupportApi
+        --
+        +constructor(supportApi: SupportApi)
+        -loadReviews(): void
+        --
+        +getReviewById(id: number): Signal<Review | undefined>
+        +addReview(review: Review): void
+        +updateReview(updatedReview: Review): void
+        +deleteReview(id: number): void
+    }
+}
+
+package support.presentation.components{
+    class ReviewItem <<Component>>{
+        review: Review<input>
+    }
+}
+
+'********************************************************************************************'
+'********************************************************************************************'
+'********************************************************************************************'
+
+package community.domain.model{
+     class Answer <<Entity>>{
+        -_id: number
+        -_comment: string
+        -_creationDate: string
+        -_user: User
+        --
+        +constructor(answer{}: object)
+        +get id(): number
+        +get comment(): string
+        +get creationDate(): string
+        +get user(): User
+     }
+    class Publication <<Aggregate root>>{
+        -_id: number
+        -_comment: string
+        -_image: string
+        -_creationDate: string
+        -_answers: Answer[]
+        -_user: User
+        --
+        +constructor(publication{}: object)
+        +get id(): number
+        +get comment(): string
+        +get image(): string
+        +get creationDate(): string
+        +get answers(): Answer[]
+        +get user(): User
+    }
+}
+
+package community.infrastructure.resources{
+    interface AnswerResource <<Resource>>{
+        id: number
+        comment: string
+        creationDate: string
+        user: UserResource
+    }
+
+    interface PublicationResource <<Resource>>{
+        id: number
+        comment: string
+        image: string
+        creationDate: string
+        answers: AnswerResource[]
+        user: UserResource
+    }
+}
+
+package community.infrastructure.responses{
+    interface AnswersResponse <<Response>>{
+        answers: AnswerResource[]
+    }
+    interface PublicationsResponse <<Response>>{
+        publications: PublicationResource[]
+    }
+}
+
+package community.infrastructure.assemblers{
+    class AnswerAssembler <<Assembler>>{
+        +toEntityFromResource(resource: AnswerResource): Answer
+        +toEntitiesFromResponse(response: AnswersResponse): Answer[]
+        +toResourceFromEntity(entity: Answer): AnswerResource
+    }
+    class PublicationAssembler <<Assembler>>{
+        +toEntityFromResource(resource: PublicationResource): Publication
+        +toEntitiesFromResponse(response: PublicationsResponse): Publication[]
+        +toResourceFromEntity(entity: Publication): PublicationResource
+    }
+}
+
+package community.infrastructure.services{
+    class AnswersApiEndpoint <<Service>>{
+        +constructor(http: HttpClient)
+
+    }
+    class PublicationsApiEndpoint <<Service>>{
+        +constructor(http: HttpClient)
+    }
+    class CommunityApi <<Service>>{
+        -answersEndpoint: AnswersApiEndpoint
+        -publicationsEndpoint: PublicationsApiEndpoint
+        --
+        +constructor(http: HttpClient)
+        +getAnswers(): Observable<Answer[]>
+        +getAnswer(id: number): Observable<Answer>
+        +createAnswer(answer: Answer): Observable<Answer>
+        +updateAnswer(answer: Answer): Observable<Answer>
+        +deleteAnswer(id: number): Observable<void>
+        --
+        +getPublications(): Observable<Publication[]>
+        +getPublication(id: number): Observable<Publication>
+        +createPublication(publication: Publication): Observable<Publication>
+        +updatePublication(publication: Publication): Observable<Publication>
+        +deletePublication(id: number): Observable<void>
+    }
+}
+
+package community.application{
+    class CommunityStore <<Store>>{
+        -answersSignal: WritableSignal<Answer[]>
+        +answers: Signal<Answer[]>
+        -publicationsSignal: WritableSignal<Publication[]>
+        +publications: Signal<Publication[]>
+        -communityApi: CommunityApi
+        --
+        +constructor(communityApi: CommunityApi)
+        -loadReviews(): void
+        -loadPublications(): void
+        --
+        +getAnswerById(id: number): Signal<Answer | undefined>
+        +addAnswer(answer: Answer): void
+        +updateAnswer(updatedAnswer: Answer): void
+        +deleteAnswer(id: number): void
+        --
+        +getPublicationById(id: number): Signal<Publication | undefined>
+        +addPublication(publication: Publication): void
+        +updatePublication(updatedPublication: Publication): void
+        +deletePublication(id: number): void
+    }
+}
+
+package community.presentation.components{
+    class AnswerItem <<Component>>{
+        answer: Answer(input)
+    }
+    class PublicationItem <<Component>>{
+        publication: Publication(input)
+    }
+}
+
+package community.presentation.views{
+    class Forum<<View>>{
+        communityStore: CommunityStore
+        publications: Publication[]
+    }
+    class PublicationView <<View>>{
+        communityStore: CommunityStore
+        publication: Publication(input)
+        answers: Answer[]
+    }
+}
+
+'********************************************************************************************'
+'********************************************************************************************'
+'********************************************************************************************'
+
+package iam.domain.model{
+    enum AccountType <<Enumeration>>{
+        PROGRAMMER
+        ARTIST
+        COMPOSER
+        STANDARD
+    }
+    class User <<Entity>>{
+        -_id: number
+        -_name: string
+        -_phoneNumber: string
+        --
+        +constructor(user{}: object)
+        +get id(): number
+        +get name(): string
+        +get phoneNumber(): string
+        set name(val: string): void
+        set phoneNumber(val: string): void
+    }
+    class Account <<Aggregate root>>{
+        -_id: number
+        -_user: User
+        -_email: string
+        -_password: string
+        -_isActive: boolean
+        -_role: AccountType
+        --
+        +constructor(account{}: object)
+        +get id(): number
+        +get User(): User
+        +get email(): string
+        +get isActive(): boolean
+        +get role(): AccountType
+        +set user(user: User): void
+        +set email(val: string): void
+        +set isActive(val: boolean): void
+        +set role(val: AccountType): void
+    }
+}
+
+package iam.infrastructure.resources{
+    interface UserResource <<Resource>>{
+        id: number
+        name: string
+        phoneNumber: string
+    }
+    interface AccountResource <<Resource>>{
+        id: number
+        user: UserResource
+        email: string
+        password: string
+        isActive: boolean
+        role: AccountType
+    }
+}
+
+package iam.infrastructure.responses{
+    interface AccountsResponse{
+        accounts: AccountResource[]
+    }
+    interface UsersResponse{
+        uses: UserResource[]
+    }
+}
+
+package iam.infrastructure.assemblers{
+    class AccountAssembler <<Assembler>>{
+        +toEntityFromResource(resource: AccountResource): Account
+        +toEntitiesFromResponse(response: AccountsResponse): Account[]
+        +toResourceFromEntity(entity: Account): AccountResource
+    }
+    class UserAssembler <<Assembler>>{
+        +toEntityFromResource(resource: UserResource): User
+        +toEntitiesFromResponse(response: UsersResponse): User[]
+        +toResourceFromEntity(entity: User): UserResource
+    }
+}
+
+package iam.infrastructure.services{
+    class UsersApiEndPoint <<Service>>{
+        +constructor(http: HttpClient)
+    }
+
+    class AccountsApiEndpoint <<Service>> {
+        +constructor(http: HttpClient)
+    }
+    class IamApi{
+        -usersEndpoint: UsersApiEndpoint
+        -accountsEndpoint: AccountsApiEndpoint
+        --
+        +constructor(http: HttpClient)
+        +getUsers(): Observable<User[]>
+        +getUser(id: number): Observable<User>
+        +createUser(user: User): Observable<User>
+        +updateUser(user: User): Observable<User>
+        +deleteUser(id: number): Observable<void>
+        --
+        +getAccounts(): Observable<Account[]>
+        +getAccount(id: number): Observable<Account>
+        +createAccount(account: Account): Observable<Account>
+        +updateAccount(account: Account): Observable<Account>
+        +deleteAccount(id: number): Observable<void>
+    }
+}
+
+package iam.application{
+    class IamStore <<Store>>{
+        -usersSignal: WritableSignal<User[]>
+        -accountsSignal: WritableSignal<Account[]>
+        +users: Signal<User[]>
+        +accounts: Signal<Account[]>
+        -iamApi: IamApi
+        --
+        +constructor(iamApi: IamApi)
+        -loadUsers(): void
+        -loadAccounts(): void
+        --
+        +getUserById(id: number): Signal<User | undefined>
+        +addUser(user: User): void
+        +updateUser(updatedUser: User): void
+        +deleteUser(id: number): void
+        --
+        +getAccountById(id: number): Signal<Account | undefined>
+        +addAccount(account: Account): void
+        +updateAccount(updatedAccount: Account): void
+        +deleteAccount(id: number): void
+    }
+}
+
+
+package iam.presentation.views{
+    class LogInView{
+        iamStore: IamStore
+        user: User
+        account: Account
+    }
+    class SignUpView{
+        iamStore: IamStore
+        user: User
+        account: Account
+    }
+}
+
+'********************************************************************************************'
+'********************************************************************************************'
+'********************************************************************************************'
+
+package payment.domain.model{
+    class ShoppingCart <<Aggregate root>>{
+        -_id: number
+        -_creationDate: string
+        -_price: number
+        -_game: Game
+        -_profile: Profile
+        --
+        +constructor(invoice{}: object)
+        +get id(): number
+        +get creationDate(): string
+        +get price(): number
+        +get game(): Game
+        +get profile(): Profile
+    }
+}
+package payment.infrastructure.resources{
+    interface ShoppingCartResource <<Resource>>{
+        id: number
+        creationDate: string
+        price: number
+        game: GameResource
+        profile: ProfileResource
+    }
+}
+package payment.infrastructure.responses{
+    interface ShoppingCartsResponse <<Response>>{
+        shoppingCarts: ShoppingCartResource[]
+    }
+}
+package payment.infrastructure.assemblers{
+    class ShoppingCartAssembler <<Assembler>>{
+        +toEntityFromResource(resource: ShoppingCartResource): ShoppingCart
+        +toEntitiesFromResponse(response: ShoppingCartsResponse): ShoppingCart[]
+        +toResourceFromEntity(entity: ShoppingCart): ShoppingCartResource
+    }
+}
+package payment.infrastructure.services{
+    class ShoppingCartsApiEndPoint <<Service>>{
+        +constructor(http: HttpClient)
+    }
+
+    class PaymentApi{
+        -shoppingCartsEndpoint: ShoppingCartsApiEndpoint
+        --
+        +constructor(http: HttpClient)
+        +getShoppingCarts(): Observable<ShoppingCart[]>
+        +getShoppingCart(id: number): Observable<ShoppingCart>
+        +createShoppingCart(shoppingCart: ShoppingCart): Observable<ShoppingCart>
+        +updateShoppingCart(shoppingCart: ShoppingCart): Observable<ShoppingCart>
+        +deleteShoppingCart(id: number): Observable<void>
+    }
+}
+package payment.application{
+    class PaymentStore <<Store>>{
+        -shoppingCartsSignal: WritableSignal<ShoppingCart[]>
+        +shoppingCarts: Signal<ShoppingCart[]>
+        -paymentApi: PaymentApi
+        --
+        +constructor(paymentApi: PaymentApi)
+        -loadShoppingCarts(): void
+        --
+        +getShoppingCartById(id: number): Signal<ShoppingCart | undefined>
+        +addShoppingCart(shoppingCart: ShoppingCart): void
+        +updateShoppingCart(updatedShoppingCart: ShoppingCart): void
+        +deleteShoppingCart(id: number): void
+    }
+}
+package payment.presentation.views{
+    class ShoppingCartView <<View>>{
+        paymentStore: PaymentStore
+        shoppingCart: ShoppingCart(input)
+    }
+}
+
+'********************************************************************************************'
+'********************************************************************************************'
+'********************************************************************************************'
+
+
+package shared.domain.model{
+    interface BaseEntity<<Entity>>{
+        id: number
+    }
+}
+
+package shared.infrastructure{
+    interface BaseResponse <<Response>>
+    interface BaseResource <<Response>>{
+        id: number
+    }
+    interface BaseAssembler <<Assembler>>{
+        +toEntityFromResource(resource: BaseResource): BaseEntity
+        +toEntitiesFromResponse(response: BaseResponse): BaseEntity[]
+        +toResourceFromEntity(entity: BaseEntity): BaseResource
+    }
+    class BaseApiEndpoint <<Service>>{
+        #http: HttpClient
+        #endpointUrl: string
+        #assembler: BaseAssembler
+        +constructor(http: HttpClient, endpointUrl: string, assembler: BaseAssembler)
+        +getAll(): Observable<BaseEntity[]>
+        +getById(id: number): Observable<BaseEntity>
+        +create(entity: BaseEntity): Observable<BaseEntity>
+        +update(entity: BaseEntity): Observable<BaseEntity>
+        +delete(id: number): Observable<void>
+    }
+    class BaseApi <<Service>>
+}
+
+package shared.presentation.components{
+    class LanguageSwitcher
+    class Layout
+}
+
+
+'********************************************************************************************'
+'********************************************************************************************'
+'********************************************************************************************'
+
+
+'------------------project connections-----------------------'
+
+'base to real connections'
+Project ..|> BaseEntity
+ProjectApi ..|> BaseApi
+
+GameResource --|> BaseResource
+GamesResponse --|> BaseResponse
+GameAssembler ..|> BaseAssembler
+GamesApiEndpoint ..|> BaseApiEndpoint
+
+ArtResource --|> BaseResource
+ArtsResponse --|> BaseResponse
+ArtAssembler ..|> BaseAssembler
+ArtsApiEndpoint ..|> BaseApiEndpoint
+
+AudioResource --|> BaseResource
+AudiosResponse ..|> BaseResponse
+AudioAssembler ..|> BaseAssembler
+AudiosApiEndpoint ..|> BaseApiEndpoint
+
+'domain layer'
+Project o---> Review
+Game ..> GameCategory
+Art ..> ArtCategory
+Audio ..> AudioCategory
+
+'assembler layer'
+GameAssembler ..> GameResource
+GameAssembler ..> GamesResponse
+GameAssembler -> Game :creates
+
+ArtAssembler ..> ArtResource
+ArtAssembler ..> ArtsResponse
+ArtAssembler --> Art :creates
+
+AudioAssembler ..> AudioResource
+AudioAssembler ..> AudiosResponse
+AudioAssembler --> Audio :creates
+
+'resource layer'
+GameResource --> GameCategory
+GameResource *---> ReviewResource
+ArtResource *---> ReviewResource
+ArtResource --> ArtCategory
+AudioCategory --> AudioCategory
+AudioResource *---> ReviewResource
+
+'response layer'
+GamesResponse *-->  GameResource
+ArtsResponse *--> ArtResource
+AudiosResponse *-->  AudioResource
+
+'application layer'
+ProjectStore -> Game
+ProjectStore -> Art
+ProjectStore -> Audio
+ProjectStore -> ProjectApi
+
+'view layer'
+GameProjectView --> ProjectStore
+GameProjectView --> Game
+
+ArtProjectView --> ProjectStore
+ArtProjectView --> Art
+
+AudioProjectView --> ProjectStore
+ArtProjectView --> Audio
+'--------------------------------------------------------------'
+
+
+
+
+'------------------marketplace connections-----------------------'
+
+'component layer'
+GameItem -> Game
+ArtItem -> Art
+AudioItem -> Audio
+DeveloperItem -> Profile
+
+'view layer'
+Home ----> ProjectStore
+Home ----> ProfileStore
+Home -> Game
+Home -> Audio
+Home -> Art
+Home -> Profile
+
+GamesView -> ProjectStore
+GamesView *-> Game
+
+ArtsView -> ProjectStore
+ArtsView *-> Art
+
+AudiosView -> ProjectStore
+AudiosView *-> Audio
+
+DevelopersView --> ProfileStore
+DevelopersView *-> Profile
+'-----------------------------------------------------------------'
+
+
+
+
+
+'------------------iam connections--------------------------'
+
+'base to real connections'
+User .|> BaseEntity
+Account .|> BaseEntity
+
+UserResource -|> BaseResource
+UsersResponse -|> BaseResponse
+UserAssembler .|> BaseAssembler
+UsersApiEndPoint .|> BaseApiEndpoint
+
+AccountResource -|> BaseResource
+AccountsResponse -|> BaseResponse
+AccountAssembler .|> BaseAssembler
+AccountsApiEndpoint .|> BaseApiEndpoint
+
+IamApi .|> BaseApi
+
+'domain layer'
+Account -> User
+Account .> AccountType
+
+'response layer'
+AccountsResponse *-> AccountResource
+UsersResponse *-> UserResource
+
+'resource layer'
+AccountResource -> UserResource
+AccountResource -> AccountType
+
+'assembler layer'
+UserAssembler .> User
+UserAssembler .> UserResource
+UserAssembler .> UsersResponse
+
+AccountAssembler .> Account
+AccountAssembler .> AccountResource
+AccountAssembler .> AccountsResponse
+
+'service layer'
+IamApi -> UsersApiEndPoint
+IamApi -> AccountsApiEndpoint
+IamApi .> User
+IamApi .> Account
+
+'application layer'
+IamStore *-> User
+IamStore *-> Account
+IamStore -> IamApi
+
+'views layer'
+LogInView -> IamStore
+LogInView -> User
+LogInView -> Account
+LogInView -> LanguageSwitcher
+
+SignUpView -> IamStore
+SignUpView -> User
+SignUpView -> Account
+SignUpView -> LanguageSwitcher
+
+'-----------------------------------------------------------'
+
+
+'------------------profile connections-----------------------'
+
+'base to real connections'
+Portfolio ..|> BaseEntity
+GroupProject ..|> BaseEntity
+Profile ..|> BaseEntity
+ProfileApi ..|> BaseApi
+
+PortfolioResource --|> BaseResource
+PortfoliosResponse --|> BaseResponse
+PortfolioAssembler ..|> BaseAssembler
+PortfoliosApiEndpoint ..|> BaseApiEndpoint
+
+GroupProjectResource --|> BaseResource
+GroupProjectsResponse --|> BaseResponse
+GroupProjectAssembler ..|> BaseAssembler
+GroupProjectsApiEndpoint ..|> BaseApiEndpoint
+
+ProfileResource --|> BaseResource
+ProfilesResponse ..|> BaseResponse
+ProfileAssembler ..|> BaseAssembler
+ProfilesApiEndpoint ..|> BaseApiEndpoint
+
+'domain layer'
+Portfolio o-> Game
+GroupProject -> Game
+Profile -> User
+Profile -> Portfolio
+
+'resource layer'
+PortfolioResource *-> GameResource
+GroupProjectResource -> GameResource
+ProfileResource -> PortfolioResource
+ProfileResource ----> AccountResource
+
+'response layer'
+PortfoliosResponse *-> PortfolioResource
+GroupProjectsResponse *-> GroupProjectResource
+ProfilesResponse *-> ProfileResource
+
+'assembler layer'
+PortfolioAssembler ...> Portfolio
+PortfolioAssembler ..> PortfolioResource
+PortfolioAssembler ..> PortfoliosResponse
+
+GroupProjectAssembler  ..> GroupProjectsResponse
+GroupProjectAssembler  ..> GroupProjectResource
+GroupProjectAssembler ..> GroupProject
+
+ProfileAssembler  ..> Profile
+ProfileAssembler  ..> ProfileResource
+ProfileAssembler  ..> ProfilesResponse
+
+'service layer'
+ProfileApi -> PortfoliosApiEndpoint
+ProfileApi -> GroupProjectsApiEndpoint
+ProfileApi -> ProfilesApiEndpoint
+ProfileApi ..> Portfolio
+ProfileApi ..> Profile
+
+'application layer'
+ProfileStore *--> Portfolio
+ProfileStore *--> GroupProject
+ProfileStore *--> Profile
+ProfileStore --> ProfileApi
+
+'components layer'
+PortfolioItem --> Portfolio
+GroupProjectItem --> GroupProject
+
+'views layer'
+ProfileView --> Profile
+ProfileView --> ProfileStore
+ProfileView *--> Portfolio
+ProfileView *--> GroupProject
+
+'-----------------------------------------------------------'
+
+
+
+
+'------------------support connections-----------------------'
+'base to real connections'
+Review ..|> BaseEntity
+SupportApi ..|> BaseApi
+
+ReviewResource --|> BaseResource
+ReviewsResponse --|> BaseResponse
+ReviewAssembler ..|> BaseAssembler
+ReviewsApiEndpoint ..|> BaseApiEndpoint
+
+'domain layer'
+Review ---> User
+
+'resource layer'
+ReviewResource ---> UserResource
+
+'response layer'
+ReviewsResponse *-> ReviewResource
+
+'assembler layer'
+ReviewAssembler ..> ReviewResource
+ReviewAssembler ..> ReviewsResponse
+ReviewAssembler ..> Review
+
+'service layer'
+SupportApi --> ReviewsApiEndpoint
+SupportApi ..> Review
+
+'application layer'
+SupportStore *--> Review
+SupportStore ...> Review
+
+'component layer'
+ReviewItem --> Review
+
+'-----------------------------------------------------------'
+
+
+
+
+'------------------community connections-----------------------'
+'base to real connections'
+Answer ..|> BaseEntity
+Publication ..|> BaseEntity
+CommunityApi ..|> BaseApi
+
+AnswerResource --|> BaseResource
+AnswersResponse --|> BaseResponse
+AnswerAssembler ..|> BaseAssembler
+AnswersApiEndpoint ..|> BaseApiEndpoint
+
+PublicationResource --|> BaseResource
+PublicationsResponse --|> BaseResponse
+PublicationAssembler ..|> BaseAssembler
+PublicationsApiEndpoint ..|> BaseApiEndpoint
+
+'domain layer'
+Answer ---> User
+Publication o---> Answer
+Publication ---> User
+
+'resource layer'
+AnswerResource ---> UserResource
+PublicationResource *---> AnswerResource
+PublicationResource --->UserResource
+
+'response layer'
+AnswersResponse *--> AnswerResource
+PublicationsResponse *--> PublicationResource
+
+'assembler layer'
+AnswerAssembler ..> AnswerResource
+AnswerAssembler ..> AnswersResponse
+AnswerAssembler ..> AnswerResource
+
+PublicationAssembler ..> PublicationResource
+PublicationAssembler ..> PublicationsResponse
+PublicationAssembler ..> Publication
+
+'service layer'
+CommunityApi --> AnswersApiEndpoint
+CommunityApi --> PublicationsApiEndpoint
+CommunityApi ..> Answer
+CommunityApi ..> Publication
+
+'application layer'
+CommunityStore *--> Answer
+CommunityStore *--> Publication
+CommunityStore --> CommunityApi
+CommunityStore ..> Answer
+CommunityStore ..> Publication
+
+'component layer'
+AnswerItem --> Answer
+PublicationItem --> Publication
+
+'view layer'
+Forum --> CommunityStore
+Forum *--> Publication
+
+PublicationView --> CommunityStore
+PublicationView --> Publication
+PublicationView o--> Answer
+
+'-----------------------------------------------------------'
+
+
+
+
+'------------------payment connections-----------------------'
+'base to real connections'
+ShoppingCart ..|> BaseEntity
+PaymentApi ..|> BaseApi
+
+ShoppingCartResource --|> BaseResource
+ShoppingCartsResponse --|> BaseResponse
+ShoppingCartAssembler ..|> BaseAssembler
+ShoppingCartsApiEndpoint ..|> BaseApiEndpoint
+
+'domain layer'
+ShoppingCart ---> Game
+ShoppingCart ---> Profile
+
+'resource layer'
+ShoppingCartResource ---> GameResource
+ShoppingCartResource ---> ProfileResource
+
+'response layer'
+ShoppingCartsResponse *--> ShoppingCartResource
+
+'assembler layer'
+ShoppingCartAssembler ..> ShoppingCartResource
+ShoppingCartAssembler ..> ShoppingCartsResponse
+ShoppingCartAssembler ..> ShoppingCart
+
+'service layer'
+PaymentApi --> ShoppingCartsApiEndpoint
+PaymentApi ..> ShoppingCart
+
+'application layer'
+PaymentStore *--> ShoppingCart
+PaymentStore --> PaymentApi
+PaymentStore ..> ShoppingCart
+
+'view layer'
+ShoppingCartView --> PaymentStore
+ShoppingCartView --> ShoppingCart
+'-------------------------------------------------------------'
+
+
+
+'------------------shared connections-----------------------'
+
+'base classes connections'
+BaseAssembler .> BaseEntity
+BaseAssembler .> BaseResponse
+BaseAssembler .> BaseResource
+BaseApiEndpoint .> BaseEntity
+BaseApiEndpoint .> BaseResource
+BaseApiEndpoint .> BaseResponse
+BaseApiEndpoint -> BaseAssembler
+
+'Layout to LanguageSwitcher connection'
+Layout -> LanguageSwitcher
+'-----------------------------------------------------------'
+
+
+
+@enduml
